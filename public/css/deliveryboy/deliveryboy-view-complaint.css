@@ -1,0 +1,50 @@
+.u-section-1 .u-sheet-1 {
+  min-height: 500px;
+}
+
+.u-section-1 .u-icon-1 {
+  width: 64px;
+  height: 64px;
+  margin: 9px auto 0 0;
+}
+
+.u-section-1 .u-btn-1 {
+  border-style: none;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-image: none;
+  margin: -45px 0 0 auto;
+}
+
+.u-section-1 .u-text-1 {
+  font-weight: 700;
+  margin: 30px auto 0;
+}
+
+.u-section-1 .u-table-1 {
+  margin-top: 21px;
+  margin-bottom: 60px;
+}
+
+.u-section-1 .u-table-header-1 {
+  font-weight: 700;
+  background-image: none;
+}
+
+.u-section-1 .u-table-body-1 {
+  background-image: none;
+}
+
+.u-block-2d0a-20 {
+  background-image: none;
+}
+
+@media (max-width: 1199px) {
+  .u-section-1 .u-btn-1 {
+    text-transform: none;
+    padding-left: 68px;
+    padding-right: 68px;
+  }
+}
