@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('area')->nullable();
             $table->integer('pincode')->nullable();
             $table->string('role');
+            $table->integer('reset_token')->nullable();
             $table->integer('otp')->nullable();
             $table->timestamps();
         });

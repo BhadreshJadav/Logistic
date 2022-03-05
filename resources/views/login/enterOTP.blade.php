@@ -34,7 +34,16 @@
     <div class="limiter">
         <div class="container-login100" style="background-image: url('/images/l-images/bg2.jpg');">
             <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-                <form class="login100-form validate-form">
+                <div class="card-body">
+                    @if (session('success'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                </div>
+                <p style="text-align: center">Enter OTP received in your mail!</p>
+                <form action="{{ route('reset-password') }}" method="post" class="login100-form validate-form">
+                    @csrf
                     <span class="login100-form-title p-b-49">
                         Enter OTP
                     </span>
@@ -49,7 +58,7 @@
                     <div class="container-login100-form-btn">
                         <div class="wrap-login100-form-btn">
                             <div class="login100-form-bgbtn"></div>
-                            <button class="login100-form-btn">
+                            <button type="submit" class="login100-form-btn">
                                 Submit
                             </button>
                         </div>

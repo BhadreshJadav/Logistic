@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,19 +41,27 @@ route::view("complaints",'support/complaints');
 route::view("shipment-related",'support/shipment-related');
 route::view("shipwith-us",'support/shipwith-us');
 
-route::view("login",'login/login');
-route::view("/signup",'login/signup');
+route::view("login",'login/login')->middleware('guest');
+route::view("/signup",'login/signup')->middleware('guest');
+route::post("/signup",[AuthController::class, 'signup'])->name('signup');
+route::post("/login",[AuthController::class, 'login'])->name('login');
 route::view("createpassword",'login/createpassword');
 route::view("enterOTP",'login/enterOTP');
 route::view("forgotpassword",'login/forgotpassword');
-route::view("updateemailOTP",'login/updateemailOTP');
+route::post("/forgot-password",[AuthController::class, 'forgotPassword'])->name('forgot.password');
 route::view("updateemail",'login/updateemail');
+route::post("/update-email-otp",[AuthController::class, 'updateEmailOtp'])->name('update-email-otp');
+//route::view("updateemailOTP",'login/updateemailOTP');
+route::post("/update-email",[AuthController::class, 'updateEmail'])->name('update-email');
 route::view("updatepassword",'login/updatepassword');
+route::post("update-password",[AuthController::class, 'updatePassword'])->name('update.password');
+route::post("reset-password",[AuthController::class, 'resetPassword'])->name('reset-password');
+route::post("post-reset-password",[AuthController::class, 'postResetPassword'])->name('post-reset-password');
+route::get("/logout",[AuthController::class, 'logout'])->name('logout');
 
 
 route::view("admin-home",'admin/admin-home');
 route::view("admin-profile",'admin/admin-profile');
-route::view("logout",'index');
 
 route::view("admin-deliveryboy-main",'admin/d-boy/admin-deliveryboy-main');
 route::view("admin-deliveryboy-details",'admin/d-boy/admin-deliveryboy-details');
@@ -81,8 +90,10 @@ route::view("manager-deliveryboy-main",'manager/manager-dboy/manager-deliveryboy
 route::view("add-new-deliveryboy",'manager/manager-dboy/add-new-deliveryboy');
 route::view("manager-deliveryboy-details",'manager/manager-dboy/manager-deliveryboy-details');
 
-route::view("user-home",'user/user-home');
-route::view("user-profile",'user/user-profile');
+Route::group(['middleware' => 'auth'], function () {
+    route::view("user-home",'user/user-home')->name('user.home');
+    route::view("user-profile",'user/user-profile');
+});
 
 route::view("user-completed-order",'user/userorder/user-completed-order');
 route::view("user-current-order",'user/userorder/user-current-order');

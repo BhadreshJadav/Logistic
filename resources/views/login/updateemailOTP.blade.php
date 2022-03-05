@@ -34,18 +34,25 @@
     <div class="limiter">
         <div class="container-login100" style="background-image: url('/images/l-images/bg2.jpg');">
             <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-                <form class="login100-form validate-form">
+                <div class="card-body">
+                    @if (isset($message))
+                        <div class="alert alert-danger" role="alert">
+                            {{ $message }}
+                        </div>
+                    @endif
+                </div>
+                <form action="{{ route('update-email') }}" method="post" class="login100-form validate-form">
+                    @csrf
                     <span class="login100-form-title p-b-49">
                         Enter OTP
                     </span>
 
-                    <div class="wrap-input100 validate-input m-b-23" data-validate="OTP is reauired">
+                    <div class="wrap-input100 validate-input m-b-23" data-validate="OTP is required">
                         <span class="label-input100">Enter OTP</span>
                         <input class="input100" type="text" name="otp" placeholder="Enter OTP">
                         <span class="focus-input100" data-symbol="&#x27A6;"></span>
                     </div>
-
-
+                    <input type="hidden" name="email" value="{{ $email }}">
                     <div class="container-login100-form-btn">
                         <div class="wrap-login100-form-btn">
                             <div class="login100-form-bgbtn"></div>
@@ -56,13 +63,10 @@
                     </div>
                     <br>
 
-                
+                </form>
             </div>
-            </form>
         </div>
     </div>
-    </div>
-
 
     <!--===============================================================================================-->
     <script src="vendor/jquery/jquery-3.2.1.min.js"></script>

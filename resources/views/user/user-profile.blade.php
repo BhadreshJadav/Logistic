@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
   <meta name="keywords" content="Your Profile">
-  <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <meta name="description" content="">
   <meta name="page_type" content="np-template-header-footer-from-plugin">
   <title>user-profile</title>
   <link rel="stylesheet" href="{{asset ('css/admin/nicepage.css')}}" media="screen">
@@ -48,19 +49,22 @@
             </svg>
           </a>
         </div>
+          @php
+              $user = auth()->user();
+          @endphp
         <div class="u-custom-menu u-nav-container">
           <ul class="u-nav u-unstyled u-nav-1">
             <li class="u-nav-item"><a
                 class="u-border-3 u-border-hover-palette-1-base u-button-style u-nav-link u-radius-10 u-text-hover-palette-2-base"
-                rel="nofollow" style="padding: 10px 20px;">Welcome !</a>
+                rel="nofollow" style="padding: 10px 20px;">Welcome {{ $user->name }}</a>
               <div class="u-nav-popup">
                 <ul class="u-h-spacing-40 u-nav u-unstyled u-v-spacing-11 u-nav-2">
+{{--                  <li class="u-nav-item"><a--}}
+{{--                      class="u-button-style u-grey-5 u-hover-white u-nav-link u-text-hover-palette-2-base"--}}
+{{--                      href="{{url('user-profile')}}">Profile</a>--}}
+{{--                  </li>--}}
                   <li class="u-nav-item"><a
-                      class="u-button-style u-grey-5 u-hover-white u-nav-link u-text-hover-palette-2-base"
-                      href="{{url('user-profile')}}">Profile</a>
-                  </li>
-                  <li class="u-nav-item"><a
-                      class="u-button-style u-grey-5 u-hover-white u-nav-link u-text-hover-palette-2-base" href="{{url('/')}}">Log
+                      class="u-button-style u-grey-5 u-hover-white u-nav-link u-text-hover-palette-2-base" href="{{url('/logout')}}">Log
                       Out</a>
                   </li>
                 </ul>
@@ -74,12 +78,12 @@
               <div class="u-menu-close"></div>
               <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-3">
                 <li class="u-nav-item"><a class="u-button-style u-nav-link" rel="nofollow"
-                    style="padding: 10px 20px;">Welcome !</a>
+                    style="padding: 10px 20px;">Welcome {{ auth()->user()->name }}</a>
                   <div class="u-nav-popup">
                     <ul class="u-h-spacing-40 u-nav u-unstyled u-v-spacing-11 u-nav-4">
                       <li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{url('user-profile')}}">Profile</a>
                       </li>
-                      <li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{url('/')}}">Log Out</a>
+                      <li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{url('/logout')}}">Log Out</a>
                       </li>
                     </ul>
                   </div>
@@ -100,6 +104,13 @@
     <div class="u-clearfix u-sheet u-sheet-1">
       <img class="u-image u-image-default u-preserve-proportions u-image-1" src="{{asset('images/p-images/8541831.png')}}" alt=""
         data-image-width="128" data-image-height="128" data-href="{{url('user-home')}}" data-page-id="50512247">
+        <div class="card-body">
+            @if (session('success'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('success') }}
+                </div>
+            @endif
+        </div>
       <h2 class="u-align-center u-text u-text-default u-text-1">Your Profile</h2>
       <div class="u-border-2 u-border-grey-5 u-container-style u-group u-shape-rectangle u-group-1">
         <div class="u-container-layout u-container-layout-1">
@@ -108,10 +119,12 @@
           <div class="u-align-center u-container-style u-expanded-width u-group u-shape-rectangle u-group-2">
             <div class="u-container-layout u-container-layout-2">
               <h5 class="u-text u-text-2">
-                <span style="font-weight: 700; font-size: 1.125rem;">NAME</span>
+                <span style="font-weight: 700; font-size: 1.125rem;">{{ $user->name ?? 'Name' }}</span>
                 <br>
                 <br>
-                <span style="font-size: 1rem;">Email ID :<br>City :<br>Area :<br>Pincode :<br>Mobile
+                <span style="font-size: 1rem;"> <b>Email ID</b> : {{ $user->email ?? '-' }}
+                    <br> <b>City</b> : {{ $user->city ?? '-' }}
+                    <br> <b>Mobile</b> : {{ $user->mobile ?? '-' }}
                 </span>
                 <br>
                 <br>

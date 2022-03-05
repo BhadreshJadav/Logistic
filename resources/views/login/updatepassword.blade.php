@@ -37,32 +37,37 @@
     <div class="limiter">
         <div class="container-login100" style="background-image: url('/images/l-images/bg2.jpg');">
             <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-                <form class="login100-form validate-form">
+                <div class="card-body">
+                    @if (session('success'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                </div>
+                <form action="{{ route('update.password') }}" method="post" class="login100-form validate-form">
+                    @csrf
                     <span class="login100-form-title p-b-49">
                         Update Password
                     </span>
 
                     <div class="wrap-input100 validate-input m-b-23" data-validate="Old Password is reauired">
                         <span class="label-input100">Old Password</span>
-                        <input class="input100" type="password" name="old password" placeholder="Type old password">
+                        <input class="input100" type="password" name="password" placeholder="Type old password">
                         <span class="focus-input100" data-symbol="&#xf190;"></span>
 
                     </div>
-             
+
                     <div class="wrap-input100 validate-input m-b-23" data-validate="New Password is reauired">
                         <span class="label-input100">Create New Password</span>
-                        <input class="input100" type="password" name="new password" placeholder="Type new password">
+                        <input class="input100" type="password" name="new_password" placeholder="Type new password">
                         <span class="focus-input100" data-symbol="&#xf190;"></span>
-
                     </div>
 
                     <div class="wrap-input100 validate-input m-b-23" data-validate="Match Password is reauired">
                         <span class="label-input100">Re-Enter New Password</span>
                         <input class="input100" type="password" name="new password" placeholder="Re-Enter new password">
                         <span class="focus-input100" data-symbol="&#xf190;"></span>
-
                     </div>
-
 
                     <div class="container-login100-form-btn">
                         <div class="wrap-login100-form-btn">
@@ -73,14 +78,11 @@
                         </div>
                     </div>
                     <br>
-
-            
+                </form>
             </div>
-            </form>
+
         </div>
     </div>
-    </div>
-
 
     <!--===============================================================================================-->
     <script src="vendor/jquery/jquery-3.2.1.min.js"></script>

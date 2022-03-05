@@ -52,7 +52,7 @@
           <ul class="u-nav u-unstyled u-nav-1">
             <li class="u-nav-item"><a
                 class="u-border-3 u-border-hover-palette-1-base u-button-style u-nav-link u-radius-10 u-text-hover-palette-2-base"
-                rel="nofollow" style="padding: 10px 20px;">Welcome !</a>
+                rel="nofollow" style="padding: 10px 20px;">Welcome {{ auth()->user()->name }}</a>
               <div class="u-nav-popup">
                 <ul class="u-h-spacing-40 u-nav u-unstyled u-v-spacing-11 u-nav-2">
                   <li class="u-nav-item"><a
@@ -60,7 +60,7 @@
                       href="{{url('user-profile')}}">Profile</a>
                   </li>
                   <li class="u-nav-item"><a
-                      class="u-button-style u-grey-5 u-hover-white u-nav-link u-text-hover-palette-2-base" href="{{url('/')}}">Log
+                      class="u-button-style u-grey-5 u-hover-white u-nav-link u-text-hover-palette-2-base" href="{{url('/logout')}}">Log
                       Out</a>
                   </li>
                 </ul>
