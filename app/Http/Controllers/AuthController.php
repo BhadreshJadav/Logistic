@@ -27,7 +27,7 @@ class AuthController extends Controller
 
         User::create($input);
 
-        return redirect("login")->withSuccess('User registered successfully!');
+        return redirect("login")->withSuccesss('User registered successfully!');
     }
 
     public function login(Request $request)
@@ -43,7 +43,7 @@ class AuthController extends Controller
             return redirect()->intended('user-home');
         }
 
-        return redirect("login")->withSuccess('Please enter valid credentials!');
+        return redirect("login")->withSuccess('Please enter valid username or Password! ');
     }
 
     public function logout()

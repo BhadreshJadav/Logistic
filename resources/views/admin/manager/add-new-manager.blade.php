@@ -180,20 +180,8 @@
       </div>
     </div>
   </section>
-  <script type="text/javascript">
-         $(document).ready(function(){
-            var autocomplete;
-            var id = 'city';
-
-            autocomplete = new google.maps.places.Autocomplete((document.getElementById('id')),{
-              types:['geocode'],
-            })
-         });
-          
-  </script>
-  <script type="text/javascript"
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCB1foMC7Br2ERTDV_e55nq9cyOi3y7gxQ&libraries=places&callback=initMap">
-</script>
+  
+ 
 
 </body>
 
