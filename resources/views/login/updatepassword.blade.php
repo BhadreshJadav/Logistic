@@ -59,13 +59,13 @@
 
                     <div class="wrap-input100 validate-input m-b-23" data-validate="New Password is reauired">
                         <span class="label-input100">Create New Password</span>
-                        <input class="input100" type="password" name="new_password" placeholder="Type new password">
+                        <input class="input100" type="password" name="new_password" id="newpass" placeholder="Type new password">
                         <span class="focus-input100" data-symbol="&#xf190;"></span>
                     </div>
 
                     <div class="wrap-input100 validate-input m-b-23" data-validate="Match Password is reauired">
                         <span class="label-input100">Re-Enter New Password</span>
-                        <input class="input100" type="password" name="new password" placeholder="Re-Enter new password">
+                        <input class="input100" type="password" name="new password" id="cpass" placeholder="Re-Enter new password">
                         <span class="focus-input100" data-symbol="&#xf190;"></span>
                     </div>
 
@@ -77,6 +77,19 @@
                             </button>
                         </div>
                     </div>
+                    <script type="text/javascript">
+                        function Validate(){
+                            var password = document.getElementById("newpass").value;
+                            var confirmPassword = document.getElementById("cpass").value;
+                            
+                            if(password != confirmPassword ){
+                                alert("Passwords do not match");
+                                return false;
+                            }
+                            return true;
+                        }
+                        
+                    </script>
                     <br>
                 </form>
             </div>
@@ -85,19 +98,19 @@
     </div>
 
     <!--===============================================================================================-->
-    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="{{asset('vendor/jquery/jquery-3.2.1.min.js')}}"></script>
     <!--===============================================================================================-->
-    <script src="vendor/animsition/js/animsition.min.js"></script>
+    <script src="{{asset('vendor/animsition/js/animsition.min.js')}}"></script>
     <!--===============================================================================================-->
-    <script src="vendor/bootstrap/js/popper.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="{{asset('vendor/bootstrap/js/popper.js')}}"></script>
+    <script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
     <!--===============================================================================================-->
-    <script src="vendor/select2/select2.min.js"></script>
+    <script src="{{asset('vendor/select2/select2.min.js')}}"></script>
     <!--===============================================================================================-->
-    <script src="vendor/daterangepicker/moment.min.js"></script>
-    <script src="vendor/daterangepicker/daterangepicker.js"></script>
+    <script src="{{asset('vendor/daterangepicker/moment.min.js')}}"></script>
+    <script src="{{asset('vendor/daterangepicker/daterangepicker.js')}}"></script>
     <!--===============================================================================================-->
-    <script src="vendor/countdowntime/countdowntime.js"></script>
+    <script src="{{asset('vendor/countdowntime/countdowntime.js')}}"></script>
     <!--===============================================================================================-->
     <script src="{{asset('js/main.js')}}"></script>
 

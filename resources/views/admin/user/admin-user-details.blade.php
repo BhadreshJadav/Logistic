@@ -145,12 +145,13 @@
               <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-8">Delete</th>
             </tr>
           </thead>
+          @foreach($data as $user)
           <tbody class="u-align-center u-grey-70 u-table-body u-table-body-1">
             <tr style="height: 52px;">
-              <td class="u-border-1 u-border-grey-50 u-table-cell"></td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell">Row 1</td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell">Description</td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell">Description</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{$user->id}}</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{$user->name}}</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{$user->email}}</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{$user->password}}</td>
               <td class="u-border-1 u-border-grey-50 u-table-cell">Description</td>
               <td class="u-border-1 u-border-grey-50 u-table-cell"></td>
               <td class="u-border-1 u-border-grey-50 u-table-cell"></td>
@@ -158,6 +159,7 @@
                   class="u-file-icon u-icon u-text-white u-icon-2"><img src="{{asset ('images/p-images/1.png')}}" alt=""></span>
               </td>
             </tr>
+            @endforeach
           </tbody>
         </table>
       </div>

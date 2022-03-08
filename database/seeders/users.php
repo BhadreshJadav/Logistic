@@ -20,10 +20,10 @@ class users extends Seeder
     {
         //
         DB::table('users')->insert([
-                'name'=>'Vaghela Dhruvit',
-                'email'=>'dhruvit@gmail.com',
-                'password'=>Hash::make('Dhruvit'),
-                'mobile'=>'7622992303',
+                'name'=>'Jagani Rutvik',
+                'email'=>'rutvik@gmail.com',
+                'password'=>Hash::make('rutvik'),
+                'mobile'=>'7622993230',
                 'role'=>'admin'
         ]);
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,39 +46,38 @@ route::view("login",'login/login')->middleware('guest');
 route::view("/signup",'login/signup')->middleware('guest');
 route::post("/signup",[AuthController::class, 'signup'])->name('signup');
 route::post("/login",[AuthController::class, 'login'])->name('login');
+route::post("/login",[AuthController::class, 'adminLogin'])->name('login');
+
 route::view("createpassword",'login/createpassword');
 route::view("enterOTP",'login/enterOTP');
 route::view("forgotpassword",'login/forgotpassword');
 route::post("/forgot-password",[AuthController::class, 'forgotPassword'])->name('forgot.password');
+route::post("/forgot-password",[AuthController::class, 'forgotAdminPassword'])->name('forgot.password');
+
 route::view("updateemail",'login/updateemail');
 route::post("/update-email-otp",[AuthController::class, 'updateEmailOtp'])->name('update-email-otp');
+route::post("/update-email-otp",[AuthController::class, 'updateAdminEmailOtp'])->name('update-email-otp');
+
+
 //route::view("updateemailOTP",'login/updateemailOTP');
 route::post("/update-email",[AuthController::class, 'updateEmail'])->name('update-email');
+route::post("/update-email",[AuthController::class, 'updateAdminEmail'])->name('update-email');
+
 route::view("updatepassword",'login/updatepassword');
 route::post("update-password",[AuthController::class, 'updatePassword'])->name('update.password');
+route::post("update-password",[AuthController::class, 'updateAdminPassword'])->name('update.password');
+
 route::post("reset-password",[AuthController::class, 'resetPassword'])->name('reset-password');
+route::post("reset-password",[AuthController::class, 'resetAdminPassword'])->name('reset-password');
+
 route::post("post-reset-password",[AuthController::class, 'postResetPassword'])->name('post-reset-password');
+route::post("post-reset-password",[AuthController::class, 'postResetAdminPassword'])->name('post-reset-password');
+
 route::get("/logout",[AuthController::class, 'logout'])->name('logout');
 
 
-route::view("admin-home",'admin/admin-home');
-route::view("admin-profile",'admin/admin-profile');
 
-route::view("admin-deliveryboy-main",'admin/d-boy/admin-deliveryboy-main');
-route::view("admin-deliveryboy-details",'admin/d-boy/admin-deliveryboy-details');
-route::view("admin-deliveryboy-complaints",'admin/d-boy/admin-deliveryboy-complaints');
 
-route::view("admin-manager-main",'admin/manager/admin-manager-main');
-route::view("admin-manager-details",'admin/manager/admin-manager-details');
-route::view("add-new-manager",'admin/manager/add-new-manager');
-
-route::view("admin-user-main",'admin/user/admin-user-main');
-route::view("admin-user-complaints",'admin/user/admin-user-complaints');
-route::view("admin-user-details",'admin/user/admin-user-details');
-
-route::view("admin-order-main",'admin/orders/admin-order-main');
-route::view("admin-current-order",'admin/orders/admin-current-order');
-route::view("admin-completed-order",'admin/orders/admin-completed-order');
 
 route::view("manager-home",'manager/manager-home');
 route::view("manager-profile",'manager/manager-profile');
@@ -93,6 +93,24 @@ route::view("manager-deliveryboy-details",'manager/manager-dboy/manager-delivery
 Route::group(['middleware' => 'auth'], function () {
     route::view("user-home",'user/user-home')->name('user.home');
     route::view("user-profile",'user/user-profile');
+    route::view("admin-home",'admin/admin-home')->name('admin.home');
+    route::view("admin-profile",'admin/admin-profile');
+    route::view("admin-deliveryboy-main",'admin/d-boy/admin-deliveryboy-main');
+    route::view("admin-deliveryboy-details",'admin/d-boy/admin-deliveryboy-details');
+    route::view("admin-deliveryboy-complaints",'admin/d-boy/admin-deliveryboy-complaints');
+
+    route::view("admin-manager-main",'admin/manager/admin-manager-main');
+    route::view("admin-manager-details",'admin/manager/admin-manager-details');
+    route::view("add-new-manager",'admin/manager/add-new-manager');
+
+    route::view("admin-user-main",'admin/user/admin-user-main');
+    route::view("admin-user-complaints",'admin/user/admin-user-complaints');
+    route::get("admin-user-details",[AuthController::class,'getdata']);
+
+    route::view("admin-order-main",'admin/orders/admin-order-main');
+    route::view("admin-current-order",'admin/orders/admin-current-order');
+    route::view("admin-completed-order",'admin/orders/admin-completed-order');
+
 });
 
 route::view("user-completed-order",'user/userorder/user-completed-order');
