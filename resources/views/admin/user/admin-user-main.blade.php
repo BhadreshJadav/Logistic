@@ -52,7 +52,7 @@
           <ul class="u-nav u-unstyled u-nav-1">
             <li class="u-nav-item"><a
                 class="u-border-3 u-border-hover-palette-1-base u-button-style u-nav-link u-radius-10 u-text-hover-palette-2-base"
-                rel="nofollow" style="padding: 10px 20px;">Welcome !</a>
+                rel="nofollow" style="padding: 10px 20px;">Welcome {{ auth()->user()->name }}</a>
               <div class="u-nav-popup">
                 <ul class="u-h-spacing-40 u-nav u-unstyled u-v-spacing-11 u-nav-2">
                   <li class="u-nav-item"><a
@@ -74,7 +74,7 @@
               <div class="u-menu-close"></div>
               <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-3">
                 <li class="u-nav-item"><a class="u-button-style u-nav-link" rel="nofollow"
-                    style="padding: 10px 20px;">Welcome !</a>
+                    style="padding: 10px 20px;">Welcome </a>
                   <div class="u-nav-popup">
                     <ul class="u-h-spacing-40 u-nav u-unstyled u-v-spacing-11 u-nav-4">
                       <li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{url('admin-profile')}}">Profile</a>

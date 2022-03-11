@@ -52,7 +52,7 @@
           <ul class="u-nav u-unstyled u-nav-1">
             <li class="u-nav-item"><a
                 class="u-border-3 u-border-hover-palette-1-base u-button-style u-nav-link u-radius-10 u-text-hover-palette-2-base"
-                rel="nofollow" style="padding: 10px 20px;">Welcome !</a>
+                rel="nofollow" style="padding: 10px 20px;">Welcome {{ auth()->user()->name }}</a>
               <div class="u-nav-popup">
                 <ul class="u-h-spacing-40 u-nav u-unstyled u-v-spacing-11 u-nav-2">
                   <li class="u-nav-item"><a
@@ -99,11 +99,11 @@
   <section class="u-clearfix u-section-1" id="sec-76e1">
     <div class="u-clearfix u-sheet u-sheet-1"><span class="u-file-icon u-icon u-icon-1"
         data-href="{{url('admin-manager-main')}}" data-page-id="17044625"><img src="{{asset('images/p-images/85418318.png')}}" alt=""></span>
-      <a href="https://nicepage.com/joomla-page-builder"
-        class="u-black u-border-none u-btn u-button-style u-hover-grey-75 u-btn-1">Download as XLS</a>
+      <a href="{{route('export_Manager_pdf')}}"
+        class="u-black u-border-none u-btn u-button-style u-hover-grey-75 u-btn-1">Download as PDF</a>
       <h2 class="u-align-center u-text u-text-default u-text-1">Manager Details</h2>
       <div class="u-form u-form-1">
-        <form action="#" method="POST" class="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form"
+        <form action="#" method="get" class="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form"
           style="padding: 15px;" source="custom">
           <div class="u-form-group u-form-name u-label-none">
             <label for="name-ef64" class="u-label">Name</label>
@@ -134,9 +134,9 @@
           </colgroup>
           <thead class="u-align-center u-grey-80 u-table-header u-table-header-1">
             <tr style="height: 36px;">
+            <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-1">Manager id</th>
               <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-1">Name</th>
               <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-2">Email ID</th>
-              <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-3">Passwords</th>
               <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-4">City</th>
               <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-5">Area</th>
               <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-6">Pincode</th>
@@ -144,19 +144,22 @@
               <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-8">Delete</th>
             </tr>
           </thead>
+          @foreach($data as $user)
           <tbody class="u-align-center u-grey-70 u-table-body u-table-body-1">
             <tr style="height: 52px;">
-              <td class="u-border-1 u-border-grey-50 u-table-cell">Row 1</td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell">Description</td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell">Description</td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell">Description</td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell"></td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell"></td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell"></td>
+            <td class="u-border-1 u-border-grey-50 u-table-cell">{{$user->id}}</td>
+             <td class="u-border-1 u-border-grey-50 u-table-cell">{{$user->name}}</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{$user->email}}</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{$user->city}}</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{$user->area}}</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{$user->pincode}}</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{$user->mobile}}</td>
+
               <td class="u-border-1 u-border-grey-50 u-table-cell"><span
-                  class="u-file-icon u-icon u-text-white u-icon-2"><img src="{{asset('images/p-images/11.png')}}" alt=""></span>
+                  class="u-file-icon u-icon u-text-white u-icon-2" data-href="/deleteManagerData/{{$user->id}}"><img src="{{asset('images/p-images/11.png')}}" alt=""></span>
               </td>
             </tr>
+            @endforeach
           </tbody>
         </table>
       </div>

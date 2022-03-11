@@ -110,7 +110,7 @@
                     {{ session('success') }}
                 </div>
             @endif
-        </div>
+        </div> 
       <h2 class="u-align-center u-text u-text-default u-text-1">Your Profile</h2>
       <div class="u-border-2 u-border-grey-5 u-container-style u-group u-shape-rectangle u-group-1">
         <div class="u-container-layout u-container-layout-1">

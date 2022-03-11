@@ -52,7 +52,7 @@
           <ul class="u-nav u-unstyled u-nav-1">
             <li class="u-nav-item"><a
                 class="u-border-3 u-border-hover-palette-1-base u-button-style u-nav-link u-radius-10 u-text-hover-palette-2-base"
-                rel="nofollow" style="padding: 10px 20px;">Welcome !</a>
+                rel="nofollow" style="padding: 10px 20px;">Welcome {{ auth()->user()->name }}</a>
               <div class="u-nav-popup">
                 <ul class="u-h-spacing-40 u-nav u-unstyled u-v-spacing-11 u-nav-2">
                   <li class="u-nav-item"><a
@@ -99,8 +99,8 @@
   <section class="u-clearfix u-section-1" id="sec-2d66">
     <div class="u-clearfix u-sheet u-sheet-1"><span class="u-file-icon u-icon u-icon-1" data-href="{{url('admin-user-main')}}"
         data-page-id="306730949"><img src="{{asset ('images/p-images/85418316.png')}}" alt=""></span>
-      <a href="https://nicepage.com/joomla-page-builder"
-        class="u-black u-border-none u-btn u-button-style u-hover-grey-75 u-btn-1">Download as XLS</a>
+      <a href="{{route('export_usercomplaint_pdf')}}"
+        class="u-black u-border-none u-btn u-button-style u-hover-grey-75 u-btn-1">Download as PDF</a>
       <h2 class="u-align-center u-text u-text-default u-text-1">Users Complaints&nbsp;</h2>
       <div class="u-expanded-width u-table u-table-responsive u-table-1">
         <table class="u-table-entity">

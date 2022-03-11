@@ -53,7 +53,7 @@
           <ul class="u-nav u-unstyled u-nav-1">
             <li class="u-nav-item"><a
                 class="u-border-3 u-border-hover-palette-1-base u-button-style u-nav-link u-radius-10 u-text-hover-palette-2-base"
-                rel="nofollow" style="padding: 10px 20px;">Welcome !</a>
+                rel="nofollow" style="padding: 10px 20px;">Welcome {{ auth()->user()->name }}</a>
               <div class="u-nav-popup">
                 <ul class="u-h-spacing-40 u-nav u-unstyled u-v-spacing-11 u-nav-2">
                   <li class="u-nav-item"><a
@@ -100,28 +100,26 @@
   <section class="u-clearfix u-section-1" id="sec-d6d9">
     <div class="u-clearfix u-sheet u-sheet-1"><span class="u-file-icon u-icon u-icon-1" data-href="{{url('admin-user-main')}}"
         data-page-id="306730949"><img src="{{asset ('images/p-images/85418316.png')}}" alt=""></span>
-      <a href="https://nicepage.com/joomla-page-builder"
-        class="u-black u-border-none u-btn u-button-style u-hover-grey-75 u-btn-1">Download as XLS</a>
+      <a href="{{route('export_user_pdf')}}"
+        class="u-black u-border-none u-btn u-button-style u-hover-grey-75 u-btn-1">Download as PDF</a>
       <h2 class="u-align-center u-text u-text-default u-text-1">Users Details</h2>
       <div class="u-form u-form-1">
-        <form action="#" method="POST" class="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form"
+        <form action="" method="get" class="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form"
           style="padding: 15px;" source="custom">
           <div class="u-form-group u-form-name u-label-none">
             <label for="name-ef64" class="u-label">Name</label>
-            <input type="text" placeholder="Enter User id or Name" id="name-ef64" name="name"
-              class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="">
+            <input type="search" placeholder="Enter User id or Name" id="name-ef64" name="search"
+              class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="" value="">
           </div>
           <div class="u-form-group u-form-submit">
-            <a href="#"
-              class="u-black u-border-none u-btn u-btn-submit u-button-style u-hover-grey-75 u-btn-2">Search</a>
-            <input type="submit" value="submit" class="u-form-control-hidden">
+            <button class="u-black u-border-none u-btn u-btn-submit u-button-style u-hover-grey-75 u-btn-2" type="submit">Search</button>
           </div>
-          <div class="u-form-send-message u-form-send-success">#FormSendSuccess</div>
-          <div class="u-form-send-error u-form-send-message">#FormSendError</div>
+            
           <input type="hidden" value="" name="recaptchaResponse">
         </form>
       </div>
-      <div class="u-expanded-width u-table u-table-responsive u-table-1">
+      
+      <div class="u-expanded-width u-table u-table-responsive u-table-1 ">
         <table class="u-table-entity">
           <colgroup>
             <col width="12.799999999999997%">
@@ -138,9 +136,9 @@
               <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-1">User id</th>
               <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-2">Name</th>
               <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-3">Email ID</th>
-              <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-4">Password</th>
+          {{--    <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-4">Password</th>--}}
               <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-5">City</th>
-              <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-6">Pincode</th>
+         {{--     <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-6">Pincode</th>--}}
               <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-7">Mobile</th>
               <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-8">Delete</th>
             </tr>
@@ -151,17 +149,17 @@
               <td class="u-border-1 u-border-grey-50 u-table-cell">{{$user->id}}</td>
               <td class="u-border-1 u-border-grey-50 u-table-cell">{{$user->name}}</td>
               <td class="u-border-1 u-border-grey-50 u-table-cell">{{$user->email}}</td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell">{{$user->password}}</td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell">Description</td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell"></td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell"></td>
+        {{--      <td class="u-border-1 u-border-grey-50 u-table-cell">{{$user->password}}</td>--}}
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{$user->city}}</td>
+        {{--      <td class="u-border-1 u-border-grey-50 u-table-cell"></td>--}}
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{$user->mobile}}</td>
               <td class="u-border-1 u-border-grey-50 u-table-cell"><span
-                  class="u-file-icon u-icon u-text-white u-icon-2"><img src="{{asset ('images/p-images/1.png')}}" alt=""></span>
+                   class="u-file-icon u-icon u-text-white u-icon-2" data-href="/deleteUserData/{{$user->id}}"><img src="{{asset('images/p-images/9.png')}}" alt=""></span>
               </td>
             </tr>
             @endforeach
           </tbody>
-        </table>
+        </table>  
       </div>
     </div>
   </section>

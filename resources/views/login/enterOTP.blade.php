@@ -36,7 +36,7 @@
             <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
                 <div class="card-body">
                     @if (session('success'))
-                        <div class="alert alert-success" role="alert">
+                        <div class="alert alert-danger" role="alert">
                             {{ session('success') }}
                         </div>
                     @endif

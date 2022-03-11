@@ -52,7 +52,7 @@
           <ul class="u-nav u-unstyled u-nav-1">
             <li class="u-nav-item"><a
                 class="u-border-3 u-border-hover-palette-1-base u-button-style u-nav-link u-radius-10 u-text-hover-palette-2-base"
-                rel="nofollow" style="padding: 10px 20px;">Welcome !</a>
+                rel="nofollow" style="padding: 10px 20px;">Welcome {{ auth()->user()->name }}</a>
               <div class="u-nav-popup">
                 <ul class="u-h-spacing-40 u-nav u-unstyled u-v-spacing-11 u-nav-2">
                   <li class="u-nav-item"><a
@@ -130,7 +130,7 @@
                         </div>
                         <div class="u-form-group u-label-top u-form-group-3">
                           <label for="text-5084" class="u-label u-label-3">Password</label>
-                          <input type="text" placeholder="Enter password" id="text-5084" name="password"
+                          <input type="password" placeholder="Enter password" id="text-5084" name="password"
                             class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-25 u-white u-input-3"
                             required="required">
                         </div>
@@ -141,14 +141,13 @@
                             class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-25 u-white u-input-3"
                             required="required">
                         </div>
-                        <div class="u-form-group u-label-top u-form-group-5">
-                          <label for="text-172f" class="u-label u-label-5">Area</label>
-                            <select  id="area">
-                              <option value="area">Select Area</option>
-                            <option value="varachha">Varachha</option>
-                            <option value="mota varachha">Mota Varachha</option>
-                            </select>
-                        </div>
+                        <div class="u-form-group u-label-top u-form-group-4">
+                        
+                        <label for="text-37c6" class="u-label u-label-4">Area</label><br>
+                        <input type="text" placeholder="Enter Area" id="area" name="area"
+                          class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-25 u-white u-input-3"
+                          required="required">
+                      </div>
                         <div class="u-form-group u-form-phone u-label-top u-form-group-6">
                           <label for="text-979e" class="u-label u-label-6">Pincode</label>
                           <input type="tel" id="text-979e" name="number"
@@ -163,7 +162,7 @@
                         </div>
                         <div class="u-align-center u-form-group u-form-submit u-label-top">
                           <input type="submit" value="submit" class="u-form-control-hidden">
-                          <a href="#"
+                          <a href=""
                             class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-hover-palette-1-light-1 u-radius-25 u-btn-1">register</a>
                         </div>
                         <div class="u-form-send-message u-form-send-success"></div>

@@ -48,17 +48,20 @@
             </svg>
           </a>
         </div>
+        @php
+              $user = auth()->user();
+          @endphp
         <div class="u-custom-menu u-nav-container">
           <ul class="u-nav u-unstyled u-nav-1">
             <li class="u-nav-item"><a
                 class="u-border-3 u-border-hover-palette-1-base u-button-style u-nav-link u-radius-10 u-text-hover-palette-2-base"
-                rel="nofollow" style="padding: 10px 20px;">Welcome !</a>
+                rel="nofollow" style="padding: 10px 20px;">Welcome {{ $user->name }}</a>
               <div class="u-nav-popup">
-                <ul class="u-h-spacing-40 u-nav u-unstyled u-v-spacing-11 u-nav-2">
-                  <li class="u-nav-item"><a
-                      class="u-button-style u-grey-5 u-hover-white u-nav-link u-text-hover-palette-2-base"
-                      href="{{url('deliveryboy-profile')}}">Profile</a>
-                  </li>
+               <ul class="u-h-spacing-40 u-nav u-unstyled u-v-spacing-11 u-nav-2">
+         {{--         <li class="u-nav-item"><a--}}
+         {{--             class="u-button-style u-grey-5 u-hover-white u-nav-link u-text-hover-palette-2-base"--}}
+         {{--             href="{{url('deliveryboy-profile')}}">Profile</a>--}}
+         {{--         </li>--}}
                   <li class="u-nav-item"><a
                       class="u-button-style u-grey-5 u-hover-white u-nav-link u-text-hover-palette-2-base" href="{{url('/')}}">Log
                       Out</a>
@@ -74,7 +77,7 @@
               <div class="u-menu-close"></div>
               <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-3">
                 <li class="u-nav-item"><a class="u-button-style u-nav-link" rel="nofollow"
-                    style="padding: 10px 20px;">Welcome !</a>
+                    style="padding: 10px 20px;">Welcome {{ auth()->user()->name }}</a>
                   <div class="u-nav-popup">
                     <ul class="u-h-spacing-40 u-nav u-unstyled u-v-spacing-11 u-nav-4">
                       <li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{url('deliveryboy-profile')}}">Profile</a>
@@ -97,6 +100,13 @@
     </div>
   </header>
   <section class="u-clearfix u-section-1" id="sec-2787">
+  <div class="card-body">
+            @if (session('success'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('success') }}
+                </div>
+            @endif
+        </div> 
     <div class="u-clearfix u-sheet u-sheet-1">
       <img class="u-image u-image-default u-preserve-proportions u-image-1" src="{{asset('images/p-images/854183141.png')}}" alt=""
         data-image-width="128" data-image-height="128" data-href="{{url('deliveryboy-home')}}" data-page-id="83402580">
@@ -108,12 +118,16 @@
           <div class="u-align-center u-container-style u-expanded-width u-group u-shape-rectangle u-group-2">
             <div class="u-container-layout u-container-layout-2">
               <h5 class="u-text u-text-2">
-                <span style="font-weight: 700; font-size: 1.125rem;">NAME</span>
+                <span style="font-weight: 700; font-size: 1.125rem;">{{ $user->name ?? 'Name' }}</span>
                 <br>
                 <br>
-                <span style="font-size: 1rem;">Role :</span>
+                <span style="font-size: 1rem;"><b>Role :</b>{{ $user->role ?? '-' }}</span>
                 <br>
-                <span style="font-size: 1rem;">Email ID :<br>City :<br>Area :<br>Pincode :<br>Mobile
+                <span style="font-size: 1rem;"><b>Email ID :</b>{{ $user->email ?? '-' }}
+                <br><b>City :</b>{{ $user->city ?? '-' }}
+                <br><b>Area :</b>{{ $user->area ?? '-' }}
+                <br><b>Pincode :</b>{{ $user->pincode ?? '-' }}
+                <br><b>Mobile :</b>{{ $user->mobile ?? '-' }}
                 </span>
                 <br>
                 <br>

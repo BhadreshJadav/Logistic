@@ -100,12 +100,12 @@
     </div>
   </header>
   <div class="card-body">
-            @if (session('success'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('success') }}
+                    @if (session('success'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ session('success') }}
+                        </div>
+                    @endif
                 </div>
-            @endif
-    </div>
   <section class="u-clearfix u-section-1" id="sec-0e29">
     <div class="u-clearfix u-sheet u-sheet-1">
       <img class="u-image u-image-default u-preserve-proportions u-image-1" src="{{asset ('images/p-images/854183142.png')}}" alt=""
