@@ -20,8 +20,13 @@ class AuthController extends Controller
 {
     public function getUserData(Request $request)
     {
-            $data = user::all()->where('role','user');
-            return view("/admin/user/admin-user-details",['data'=>$data]);
+            $data = User::where('role','user');
+            if (isset($request->search) && $request->search) {
+                $data->where('name', 'like' ,'%'.$request->search.'%');
+            }
+            $data = $data->get();
+
+            return view("/admin/user/admin-user-details",compact('data'));
     }
 
     public function deleteUserData($id)

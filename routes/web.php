@@ -114,7 +114,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     route::view("admin-user-main",'admin/user/admin-user-main');
     route::view("admin-user-complaints",'admin/user/admin-user-complaints');
-    route::get("/admin-user-details",[AuthController::class,'getUserData']);
+    route::get("/admin-user-details",[AuthController::class,'getUserData'])->name('admin-user-details');
     route::get("/export_user_pdf",[AuthController::class,'exportUserDetails'])->name('export_user_pdf');
     route::get("/export_usercomplaint_pdf",[AuthController::class,'exportUserComplaintDetails'])->name('export_usercomplaint_pdf');
     route::view("admin-order-main",'admin/orders/admin-order-main');

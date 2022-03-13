@@ -104,21 +104,20 @@
         class="u-black u-border-none u-btn u-button-style u-hover-grey-75 u-btn-1">Download as PDF</a>
       <h2 class="u-align-center u-text u-text-default u-text-1">Users Details</h2>
       <div class="u-form u-form-1">
-        <form action="" method="get" class="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form"
+{{--          remvoe one by one class to check--}}
+        <form action="{{ route('admin-user-details') }}" method="get" class="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form"
           style="padding: 15px;" source="custom">
           <div class="u-form-group u-form-name u-label-none">
             <label for="name-ef64" class="u-label">Name</label>
             <input type="search" placeholder="Enter User id or Name" id="name-ef64" name="search"
-              class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="" value="">
+              class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="" value="">`
           </div>
           <div class="u-form-group u-form-submit">
             <button class="u-black u-border-none u-btn u-btn-submit u-button-style u-hover-grey-75 u-btn-2" type="submit">Search</button>
           </div>
-            
-          <input type="hidden" value="" name="recaptchaResponse">
         </form>
       </div>
-      
+
       <div class="u-expanded-width u-table u-table-responsive u-table-1 ">
         <table class="u-table-entity">
           <colgroup>
@@ -159,11 +158,11 @@
             </tr>
             @endforeach
           </tbody>
-        </table>  
+        </table>
       </div>
     </div>
   </section>
-  
+
 </body>
 
 </html>

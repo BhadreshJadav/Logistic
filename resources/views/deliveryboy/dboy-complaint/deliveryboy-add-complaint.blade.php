@@ -108,7 +108,6 @@
                 <div class="alert alert-success" role="alert">
                     {{ session('success') }}
                 </div>
-
             </div>
         @endif
       <div class="u-clearfix u-layout-wrap u-layout-wrap-1">
