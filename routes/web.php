@@ -111,35 +111,32 @@ route::view("manager-deliveryboy-main",'manager/manager-dboy/manager-deliveryboy
 route::view("add-new-deliveryboy",'manager/manager-dboy/add-new-deliveryboy');
 route::view("manager-deliveryboy-details",'manager/manager-dboy/manager-deliveryboy-details');
 
-Route::group(['middleware' => 'auth'], function () {
-    route::view("user-home",'user/user-home')->name('user.home');
-    route::view("user-profile",'user/user-profile');
-    route::view("admin-home",'admin/admin-home')->name('admin.home');
-    route::view("admin-profile",'admin/admin-profile');
+Route::group(['middleware' => ['auth','isAdmin']], function () {
 
-    route::view("admin-deliveryboy-main",'admin/d-boy/admin-deliveryboy-main');
-    route::get("/admin-deliveryboy-details",[AuthController::class,'getDeliveryBoyData']);
-    route::view("admin-deliveryboy-complaints",'admin/d-boy/admin-deliveryboy-complaints');
-    route::get("/export_Deliveryboy_pdf",[AuthController::class,'exportDeliveryBoyrDetails'])->name('export_Deliveryboy_pdf');
-
-
-    route::view("admin-manager-main",'admin/manager/admin-manager-main');
-    route::get("/admin-manager-details",[AuthController::class,'getManagerData']);
-    route::view("add-new-manager",'admin/manager/add-new-manager');
-    route::get("/export_Manager_pdf",[AuthController::class,'exportManagerDetails'])->name('export_Manager_pdf');
-
-    
     route::view("admin-user-main",'admin/user/admin-user-main');
     route::view("admin-user-complaints",'admin/user/admin-user-complaints');
     route::get("/admin-user-details",[AuthController::class,'getUserData']);
     route::get("/export_user_pdf",[AuthController::class,'exportUserDetails'])->name('export_user_pdf');
     route::get("/export_usercomplaint_pdf",[AuthController::class,'exportUserComplaintDetails'])->name('export_usercomplaint_pdf');
-
-
     route::view("admin-order-main",'admin/orders/admin-order-main');
     route::view("admin-current-order",'admin/orders/admin-current-order');
     route::view("admin-completed-order",'admin/orders/admin-completed-order');
+    route::view("admin-manager-main",'admin/manager/admin-manager-main');
+    route::get("/admin-manager-details",[AuthController::class,'getManagerData']);
+    route::view("add-new-manager",'admin/manager/add-new-manager');
+    route::get("/export_Manager_pdf",[AuthController::class,'exportManagerDetails'])->name('export_Manager_pdf');
+    route::view("admin-home",'admin/admin-home')->name('admin.home');
+    route::view("admin-profile",'admin/admin-profile');
+    route::view("admin-deliveryboy-main",'admin/d-boy/admin-deliveryboy-main');
+    route::get("/admin-deliveryboy-details",[AuthController::class,'getDeliveryBoyData']);
+    route::view("admin-deliveryboy-complaints",'admin/d-boy/admin-deliveryboy-complaints');
+    route::get("/export_Deliveryboy_pdf",[AuthController::class,'exportDeliveryBoyrDetails'])->name('export_Deliveryboy_pdf');
+   
+});
 
+Route::group(['middleware' => 'auth'], function () {
+    route::view("user-home",'user/user-home')->name('user.home');
+    route::view("user-profile",'user/user-profile');
 });
 
 route::get("/deleteUserData/{id}",[AuthController::class,'deleteUserData']);
