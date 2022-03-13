@@ -125,8 +125,11 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
     route::get("/admin-manager-details",[AuthController::class,'getManagerData']);
     route::view("add-new-manager",'admin/manager/add-new-manager');
     route::get("/export_Manager_pdf",[AuthController::class,'exportManagerDetails'])->name('export_Manager_pdf');
-    route::view("admin-home",'admin/admin-home')->name('admin.home');
+    // route::view("admin-home",'admin/admin-home')->name('admin.home');
     route::view("admin-profile",'admin/admin-profile');
+    route::get('admin',function(){
+        return view("admin.admin-home");
+    })->name('admin-home');
     route::view("admin-deliveryboy-main",'admin/d-boy/admin-deliveryboy-main');
     route::get("/admin-deliveryboy-details",[AuthController::class,'getDeliveryBoyData']);
     route::view("admin-deliveryboy-complaints",'admin/d-boy/admin-deliveryboy-complaints');
@@ -134,7 +137,7 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
    
 });
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => ['auth','isAdmin']], function () {
     route::view("user-home",'user/user-home')->name('user.home');
     route::view("user-profile",'user/user-profile');
 });
