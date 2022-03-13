@@ -2,14 +2,13 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
-
-
-class users extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,8 +17,19 @@ class users extends Seeder
      */
     public function run()
     {
-        //
+        User::truncate();
         DB::table('users')->insert([
+            [
+                'name'=>'Admin',
+                'email'=>'admin@gmail.com',
+                'password'=>Hash::make('admin'),
+                'mobile'=>'9823457687',
+                'role'=>'admin',
+                'city'=>null,
+                'area'=>null,
+                'pincode'=>null
+
+            ],
             [
                 'name'=>'Savani Utsav',
                 'email'=>'utsav@gmail.com',
@@ -72,6 +82,5 @@ class users extends Seeder
                 'pincode'=>'395054'
             ]
         ]);
-
     }
 }

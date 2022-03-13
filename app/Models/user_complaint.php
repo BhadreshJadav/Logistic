@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class user_complaint extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
 }

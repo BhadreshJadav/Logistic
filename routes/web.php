@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 
+use App\Http\Controllers\ComplaintController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,63 +43,61 @@ route::view("login",'login/login')->middleware('guest');
 route::view("/signup",'login/signup')->middleware('guest');
 route::post("/signup",[AuthController::class, 'signup'])->name('signup');
 route::post("/login",[AuthController::class, 'login'])->name('login');
-route::post("/login",[AuthController::class, 'adminLogin'])->name('login');
-route::post("/login",[AuthController::class, 'managerLogin'])->name('login');
-route::post("/login",[AuthController::class, 'deliveryBoyLogin'])->name('login');
-;
+//route::post("/login",[AuthController::class, 'adminLogin'])->name('login');
+//route::post("/login",[AuthController::class, 'managerLogin'])->name('login');
+//route::post("/login",[AuthController::class, 'deliveryBoyLogin'])->name('login');
+
 
 
 route::view("createpassword",'login/createpassword');
 route::view("enterOTP",'login/enterOTP');
 route::view("forgotpassword",'login/forgotpassword');
 route::post("/forgot-password",[AuthController::class, 'forgotPassword'])->name('forgot.password');
-route::post("/forgot-password",[AuthController::class, 'forgotAdminPassword'])->name('forgot.password');
-route::post("/forgot-password",[AuthController::class, 'forgotManagerPassword'])->name('forgot.password');
-route::post("/forgot-password",[AuthController::class, 'forgotDeliveryBoyPassword'])->name('forgot.password');
+//route::post("/forgot-password",[AuthController::class, 'forgotAdminPassword'])->name('forgot.password');
+//route::post("/forgot-password",[AuthController::class, 'forgotManagerPassword'])->name('forgot.password');
+//route::post("/forgot-password",[AuthController::class, 'forgotDeliveryBoyPassword'])->name('forgot.password');
 
 
 
 route::view("updateemail",'login/updateemail');
 route::post("/update-email-otp",[AuthController::class, 'updateEmailOtp'])->name('update-email-otp');
-route::post("/update-email-otp",[AuthController::class, 'updateAdminEmailOtp'])->name('update-email-otp');
-route::post("/update-email-otp",[AuthController::class, 'updateManagerEmailOtp'])->name('update-email-otp');
-route::post("/update-email-otp",[AuthController::class, 'updateDeliveryBoyEmailOtp'])->name('update-email-otp');
+//route::post("/update-email-otp",[AuthController::class, 'updateAdminEmailOtp'])->name('update-email-otp');
+//route::post("/update-email-otp",[AuthController::class, 'updateManagerEmailOtp'])->name('update-email-otp');
+//route::post("/update-email-otp",[AuthController::class, 'updateDeliveryBoyEmailOtp'])->name('update-email-otp');
 
 
 
 //route::view("updateemailOTP",'login/updateemailOTP');
 route::post("/update-email",[AuthController::class, 'updateEmail'])->name('update-email');
-route::post("/update-email",[AuthController::class, 'updateAdminEmail'])->name('update-email');
-route::post("/update-email",[AuthController::class, 'updateManagerEmail'])->name('update-email');
-route::post("/update-email",[AuthController::class, 'updateDeliveryBoyEmail'])->name('update-email');
+//route::post("/update-email",[AuthController::class, 'updateAdminEmail'])->name('update-email');
+//route::post("/update-email",[AuthController::class, 'updateManagerEmail'])->name('update-email');
+//route::post("/update-email",[AuthController::class, 'updateDeliveryBoyEmail'])->name('update-email');
 
 
 
 route::view("updatepassword",'login/updatepassword');
 route::post("update-password",[AuthController::class, 'updatePassword'])->name('update.password');
-route::post("update-password",[AuthController::class, 'updateAdminPassword'])->name('update.password');
-route::post("update-password",[AuthController::class, 'updateManagerPassword'])->name('update.password');
-route::post("update-password",[AuthController::class, 'updateDeliveryBoyPassword'])->name('update.password');
+//route::post("update-password",[AuthController::class, 'updateAdminPassword'])->name('update.password');
+//route::post("update-password",[AuthController::class, 'updateManagerPassword'])->name('update.password');
+//route::post("update-password",[AuthController::class, 'updateDeliveryBoyPassword'])->name('update.password');
 
 
 
 route::post("reset-password",[AuthController::class, 'resetPassword'])->name('reset-password');
-route::post("reset-password",[AuthController::class, 'resetAdminPassword'])->name('reset-password');
-route::post("reset-password",[AuthController::class, 'resetManagerPassword'])->name('reset-password');
-route::post("reset-password",[AuthController::class, 'resetDeliveryBoyPassword'])->name('reset-password');
+//route::post("reset-password",[AuthController::class, 'resetAdminPassword'])->name('reset-password');
+//route::post("reset-password",[AuthController::class, 'resetManagerPassword'])->name('reset-password');
+//route::post("reset-password",[AuthController::class, 'resetDeliveryBoyPassword'])->name('reset-password');
 
 
 
 route::post("post-reset-password",[AuthController::class, 'postResetPassword'])->name('post-reset-password');
-route::post("post-reset-password",[AuthController::class, 'postResetAdminPassword'])->name('post-reset-password');
-route::post("post-reset-password",[AuthController::class, 'postResetManagerPassword'])->name('post-reset-password');
-route::post("post-reset-password",[AuthController::class, 'postResetDeliveryBoyPassword'])->name('post-reset-password');
+//route::post("post-reset-password",[AuthController::class, 'postResetAdminPassword'])->name('post-reset-password');
+//route::post("post-reset-password",[AuthController::class, 'postResetManagerPassword'])->name('post-reset-password');
+//route::post("post-reset-password",[AuthController::class, 'postResetDeliveryBoyPassword'])->name('post-reset-password');
 
 
 
 route::get("/logout",[AuthController::class, 'logout'])->name('logout');
-
-
 
 route::view("manager-home",'manager/manager-home');
 route::view("manager-profile",'manager/manager-profile');
@@ -111,7 +110,7 @@ route::view("manager-deliveryboy-main",'manager/manager-dboy/manager-deliveryboy
 route::view("add-new-deliveryboy",'manager/manager-dboy/add-new-deliveryboy');
 route::view("manager-deliveryboy-details",'manager/manager-dboy/manager-deliveryboy-details');
 
-Route::group(['middleware' => ['auth','isAdmin']], function () {
+Route::group(['middleware' => ['auth']], function () {
 
     route::view("admin-user-main",'admin/user/admin-user-main');
     route::view("admin-user-complaints",'admin/user/admin-user-complaints');
@@ -127,17 +126,17 @@ Route::group(['middleware' => ['auth','isAdmin']], function () {
     route::get("/export_Manager_pdf",[AuthController::class,'exportManagerDetails'])->name('export_Manager_pdf');
     // route::view("admin-home",'admin/admin-home')->name('admin.home');
     route::view("admin-profile",'admin/admin-profile');
-    route::get('admin',function(){
+    route::get('admin-home',function(){
         return view("admin.admin-home");
     })->name('admin-home');
     route::view("admin-deliveryboy-main",'admin/d-boy/admin-deliveryboy-main');
     route::get("/admin-deliveryboy-details",[AuthController::class,'getDeliveryBoyData']);
     route::view("admin-deliveryboy-complaints",'admin/d-boy/admin-deliveryboy-complaints');
     route::get("/export_Deliveryboy_pdf",[AuthController::class,'exportDeliveryBoyrDetails'])->name('export_Deliveryboy_pdf');
-   
+
 });
 
-Route::group(['middleware' => ['auth','isAdmin']], function () {
+Route::group(['middleware' => ['auth']], function () {
     route::view("user-home",'user/user-home')->name('user.home');
     route::view("user-profile",'user/user-profile');
 });
@@ -162,6 +161,7 @@ route::view("deliveryboy-profile",'deliveryboy/deliveryboy-profile');
 route::view("deliveryboy-order",'deliveryboy/dboy-order/deliveryboy-order');
 
 route::view("deliveryboy-add-complaint",'deliveryboy/dboy-complaint/deliveryboy-add-complaint');
+route::post("deliveryboy-add-complaint",[ComplaintController::class, 'store'])->name('deliveryboy-add-complaint');
 route::view("deliveryboy-complaint-main",'deliveryboy/dboy-complaint/deliveryboy-complaint-main');
 route::view("deliveryboy-view-complaint",'deliveryboy/dboy-complaint/deliveryboy-view-complaint');
 

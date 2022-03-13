@@ -22,8 +22,7 @@ class IsAdmin
             // dd(1);
             return redirect()->route('login');
         }else{
-            // dd(2);
-            return $next($request); 
+            return $next($request);
         }
 
     }
