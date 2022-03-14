@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
   <meta name="keywords" content="Your Profile">
+  <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
   <meta name="description" content="">
   <meta name="page_type" content="np-template-header-footer-from-plugin">
   <title>admin-profile</title>
@@ -101,7 +102,7 @@
   </header>
   <div class="card-body">
                     @if (session('success'))
-                        <div class="alert alert-danger" role="alert">
+                        <div class="alert alert-success " role="alert">
                             {{ session('success') }}
                         </div>
                     @endif

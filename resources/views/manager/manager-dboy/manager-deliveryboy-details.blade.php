@@ -60,7 +60,7 @@
                       href="{{url('manager-profile')}}">Profile</a>
                   </li>
                   <li class="u-nav-item"><a
-                      class="u-button-style u-grey-5 u-hover-white u-nav-link u-text-hover-palette-2-base" href="{{url('/')}}">Log
+                      class="u-button-style u-grey-5 u-hover-white u-nav-link u-text-hover-palette-2-base" href="{{url('/logout')}}">Log
                       Out</a>
                   </li>
                 </ul>
@@ -134,10 +134,11 @@
             <col width="13.200000000000003%">
           </colgroup>
           <thead class="u-align-center u-grey-80 u-table-header u-table-header-1">
+            
             <tr style="height: 36px;">
+             <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-3">Dboy_ID</th>
               <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-1">Name</th>
               <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-2">Email ID</th>
-              <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-3">Password</th>
               <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-4">City</th>
               <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-5">Area</th>
               <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-6">Pincode</th>
@@ -145,19 +146,21 @@
               <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-8">Delete</th>
             </tr>
           </thead>
+          @foreach($data as $value)
           <tbody class="u-align-center u-grey-70 u-table-body u-table-body-1">
             <tr style="height: 52px;">
-              <td class="u-border-1 u-border-grey-50 u-table-cell">Row 1</td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell">Description</td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell">Description</td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell">Description</td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell"></td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell"></td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell"></td>
+                <td class="u-border-1 u-border-grey-50 u-table-cell">{{$value->id}}</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{$value->name}}</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{$value->email}}</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{$value->city}}</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{$value->area}}</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{$value->pincode}}</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{$value->mobile}}</td>
               <td class="u-border-1 u-border-grey-50 u-table-cell"><span
                   class="u-file-icon u-icon u-text-white u-icon-2"><img src="{{asset('images/p-images/9.png')}}" alt=""></span>
               </td>
             </tr>
+            @endforeach
           </tbody>
         </table>
       </div>

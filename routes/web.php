@@ -108,21 +108,30 @@ route::view("manager-order-update-status",'manager/managerorder/manager-order-up
 
 route::view("manager-deliveryboy-main",'manager/manager-dboy/manager-deliveryboy-main');
 route::view("add-new-deliveryboy",'manager/manager-dboy/add-new-deliveryboy');
+route::post("add-new-deliveryboy",[AuthController::class, 'addDboy'])->name('add-new-deliveryboy');
 route::view("manager-deliveryboy-details",'manager/manager-dboy/manager-deliveryboy-details');
+route::get("/manager-deliveryboy-details",[AuthController::class,'getDboyData'])->name('manager-deliveryboy-details');
 
 Route::group(['middleware' => ['auth']], function () {
 
     route::view("admin-user-main",'admin/user/admin-user-main');
     route::view("admin-user-complaints",'admin/user/admin-user-complaints');
+    route::get("/admin-user-complaints",[ComplaintController::class,'showUserComplaint'])->name('admin-user-complaints');
+    route::get("/export_usercomplaint_pdf",[ComplaintController::class,'exportUserComplaint'])->name('export_usercomplaint_pdf');
+
     route::get("/admin-user-details",[AuthController::class,'getUserData'])->name('admin-user-details');
     route::get("/export_user_pdf",[AuthController::class,'exportUserDetails'])->name('export_user_pdf');
-    route::get("/export_usercomplaint_pdf",[AuthController::class,'exportUserComplaintDetails'])->name('export_usercomplaint_pdf');
+   
+   
+   
     route::view("admin-order-main",'admin/orders/admin-order-main');
     route::view("admin-current-order",'admin/orders/admin-current-order');
     route::view("admin-completed-order",'admin/orders/admin-completed-order');
     route::view("admin-manager-main",'admin/manager/admin-manager-main');
-    route::get("/admin-manager-details",[AuthController::class,'getManagerData']);
+    route::get("/admin-manager-details",[AuthController::class,'getManagerData'])->name('admin-manager-details');
     route::view("add-new-manager",'admin/manager/add-new-manager');
+    route::post("add-new-manager",[AuthController::class, 'addManager'])->name('add-new-manager');
+
     route::get("/export_Manager_pdf",[AuthController::class,'exportManagerDetails'])->name('export_Manager_pdf');
     // route::view("admin-home",'admin/admin-home')->name('admin.home');
     route::view("admin-profile",'admin/admin-profile');
@@ -130,8 +139,11 @@ Route::group(['middleware' => ['auth']], function () {
         return view("admin.admin-home");
     })->name('admin-home');
     route::view("admin-deliveryboy-main",'admin/d-boy/admin-deliveryboy-main');
-    route::get("/admin-deliveryboy-details",[AuthController::class,'getDeliveryBoyData']);
+    route::get("/admin-deliveryboy-details",[AuthController::class,'getDeliveryBoyData'])->name('admin-deliveryboy-details');
     route::view("admin-deliveryboy-complaints",'admin/d-boy/admin-deliveryboy-complaints');
+    route::get("/admin-deliveryboy-complaints",[ComplaintController::class,'showDboyComplaint'])->name('admin-deliveryboy-complaints');
+    route::get("/export_dboycomplaint_pdf",[ComplaintController::class,'exportDboyComplaint'])->name('export_dboycomplaint_pdf');
+
     route::get("/export_Deliveryboy_pdf",[AuthController::class,'exportDeliveryBoyrDetails'])->name('export_Deliveryboy_pdf');
 
 });
@@ -145,6 +157,10 @@ route::get("/deleteUserData/{id}",[AuthController::class,'deleteUserData']);
 route::get("/deleteManagerData/{id}",[AuthController::class,'deleteManagerData']);
 route::get("/deleteDeliveryBoyData/{id}",[AuthController::class,'deleteDeliveryBoyData']);
 
+route::get("/deleteUserComplaint/{id}",[ComplaintController::class,'deleteUserComplaint']);
+route::get("/deleteDboyComplaint/{id}",[ComplaintController::class,'deleteDboyComplaint']);
+
+
 
 
 route::view("user-completed-order",'user/userorder/user-completed-order');
@@ -152,8 +168,10 @@ route::view("user-current-order",'user/userorder/user-current-order');
 route::view("user-order-main",'user/userorder/user-order-main');
 
 route::view("user-add-complaint",'user/usercomplaint/user-add-complaint');
+route::post("user-add-complaint",[ComplaintController::class, 'storeUser'])->name('user-add-complaint');
 route::view("user-complaint-main",'user/usercomplaint/user-complaint-main');
-route::view("user-view-complaint",'user/usercomplaint/user-view-complaint');
+route::get("/user-view-complaint",[ComplaintController::class,'showUser'])->name('user-view-complaint');
+
 
 route::view("deliveryboy-home",'deliveryboy/deliveryboy-home');
 route::view("deliveryboy-profile",'deliveryboy/deliveryboy-profile');
@@ -163,7 +181,8 @@ route::view("deliveryboy-order",'deliveryboy/dboy-order/deliveryboy-order');
 route::view("deliveryboy-add-complaint",'deliveryboy/dboy-complaint/deliveryboy-add-complaint');
 route::post("deliveryboy-add-complaint",[ComplaintController::class, 'store'])->name('deliveryboy-add-complaint');
 route::view("deliveryboy-complaint-main",'deliveryboy/dboy-complaint/deliveryboy-complaint-main');
-route::view("deliveryboy-view-complaint",'deliveryboy/dboy-complaint/deliveryboy-view-complaint');
+route::get("/deliveryboy-view-complaint",[ComplaintController::class,'showDboy'])->name('deliveryboy-view-complaint');
+
 
 route::view("tracking",'tracking/tracking');
 route::view("index",'tracking/index');

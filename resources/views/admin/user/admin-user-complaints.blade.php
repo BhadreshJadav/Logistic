@@ -119,12 +119,13 @@
               <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-4">Status</th>
               <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-5">Delete</th>
             </tr>
+            @foreach($data as $value)
           </thead>
           <tbody class="u-align-center u-grey-70 u-table-body u-table-body-1">
             <tr style="height: 57px;">
-              <td class="u-border-1 u-border-grey-50 u-table-cell">Row 1</td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell">Description</td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell">Description</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{$value->user_id}}</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{$value->subject}}</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{$value->description}}</td>
               <td class="u-border-1 u-border-grey-50 u-table-cell">
               <select id="status">
                 <option value="status">Update Status</option>
@@ -133,9 +134,10 @@
                 </select>
               </td>
               <td class="u-border-1 u-border-grey-50 u-table-cell"><span
-                  class="u-file-icon u-icon u-text-white u-icon-2"><img src="{{asset('images/p-images/9.png')}}" alt=""></span>
+                  class="u-file-icon u-icon u-text-white u-icon-2" data-href="/deleteUserComplaint/{{$value->id}}"><img src="{{asset('images/p-images/9.png')}}" alt=""></span>
               </td>
             </tr>
+            @endforeach
           </tbody>
         </table>
       </div>

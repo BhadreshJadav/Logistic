@@ -60,7 +60,7 @@
                       href="{{url('admin-profile')}}">Profile</a>
                   </li>
                   <li class="u-nav-item"><a
-                      class="u-button-style u-grey-5 u-hover-white u-nav-link u-text-hover-palette-2-base" href="{{url('logout')}}">Log
+                      class="u-button-style u-grey-5 u-hover-white u-nav-link u-text-hover-palette-2-base" href="{{url('/logout')}}">Log
                       Out</a>
                   </li>
                 </ul>

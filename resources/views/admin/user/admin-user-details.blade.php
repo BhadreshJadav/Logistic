@@ -105,7 +105,7 @@
       <h2 class="u-align-center u-text u-text-default u-text-1">Users Details</h2>
       <div class="u-form u-form-1">
 {{--          remvoe one by one class to check--}}
-        <form action="{{ route('admin-user-details') }}" method="get" class="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form"
+        <form action="{{ route('admin-user-details') }}" method="get" class="u-clearfix  u-form-spacing-15 u-inner-form"
           style="padding: 15px;" source="custom">
           <div class="u-form-group u-form-name u-label-none">
             <label for="name-ef64" class="u-label">Name</label>

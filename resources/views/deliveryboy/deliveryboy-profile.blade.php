@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
   <meta name="keywords" content="Your Profile">
+  <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
   <meta name="description" content="">
   <meta name="page_type" content="np-template-header-footer-from-plugin">
   <title>delievryboy-profile</title>
@@ -63,7 +64,7 @@
          {{--             href="{{url('deliveryboy-profile')}}">Profile</a>--}}
          {{--         </li>--}}
                   <li class="u-nav-item"><a
-                      class="u-button-style u-grey-5 u-hover-white u-nav-link u-text-hover-palette-2-base" href="{{url('/')}}">Log
+                      class="u-button-style u-grey-5 u-hover-white u-nav-link u-text-hover-palette-2-base" href="{{url('/logout')}}">Log
                       Out</a>
                   </li>
                 </ul>
@@ -82,7 +83,7 @@
                     <ul class="u-h-spacing-40 u-nav u-unstyled u-v-spacing-11 u-nav-4">
                       <li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{url('deliveryboy-profile')}}">Profile</a>
                       </li>
-                      <li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{url('/')}}">Log Out</a>
+                      <li class="u-nav-item"><a class="u-button-style u-nav-link" href="{{url('/logout')}}">Log Out</a>
                       </li>
                     </ul>
                   </div>

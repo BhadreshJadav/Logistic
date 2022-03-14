@@ -13,11 +13,12 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Password;
 use phpDocumentor\Reflection\Types\Null_;
 use PDF;
 
 class AuthController extends Controller
-{
+{   
     public function getUserData(Request $request)
     {
             $data = User::where('role','user');
@@ -37,8 +38,12 @@ class AuthController extends Controller
 
     public function getManagerData(Request $request)
     {
-            $data = user::all()->where('role','manager');
-            return view("/admin/manager/admin-manager-details",['data'=>$data]);
+            $data = User::where('role','manager');
+            if (isset($request->search) && $request->search) {
+                $data->where('name', 'like' ,'%'.$request->search.'%');
+            }
+            $data = $data->get();
+            return view("/admin/manager/admin-manager-details",compact('data'));
     }
 
     public function deleteManagerData($id)
@@ -49,8 +54,12 @@ class AuthController extends Controller
 
     public function getDeliveryBoyData(Request $request)
     {
-            $data = user::all()->where('role','delivery-boy');
-            return view("/admin/d-boy/admin-deliveryboy-details",['data'=>$data]);
+            $data = user::where('role','delivery-boy');
+            if (isset($request->search) && $request->search) {
+                $data->where('name', 'like' ,'%'.$request->search.'%');
+            }
+            $data = $data->get();
+            return view("/admin/d-boy/admin-deliveryboy-details",compact('data'));
     }
 
     public function deleteDeliveryBoyData($id)
@@ -70,14 +79,7 @@ class AuthController extends Controller
         return $pdf->download('users.pdf');
     }
 
-    public function exportUserComplaintDetails()
-    {
-     //   $data = user::all()->where('role','user');
-     //   $pdf = PDF::loadView('pdf.users_complaint',[
-     //       'data'=>$data
-     //   ]);
-     //   return $pdf->download('users_Complaint.pdf');
-    }
+    
 
     public function exportManagerDetails()
     {
@@ -262,6 +264,44 @@ class AuthController extends Controller
         return back()->withSuccess('Old password is wrong!');
     }
 
+    //admin add manager
+    public function addManager(Request $request)
+    {
+        $user = Auth::user();
+
+        $input = $request->only('name', 'city', 'email', 'password', 'mobile','area','pincode');
+        $input['role'] = 'manager';
+        $input['password'] = Hash::make($input['password']);
+
+        User::create($input);
+     
+        return back()->withSuccess('Manager Add successfully!');
+    }
+
+    //manager show dboy details
+    public function getDboyData(Request $request)
+    {       
+            $user = Auth::user();
+            $data = User::where('role','delivery-boy' );
+            
+            $data = $data->get();
+
+            return view("manager/manager-dboy/manager-deliveryboy-details",compact('data'));
+    }
+    
+    //manager add dboy
+    public function addDboy(Request $request)
+    {
+        $user = Auth::user();
+
+        $input = $request->only('name', 'city', 'email', 'password', 'mobile','area','pincode');
+        $input['role'] = 'delivery-boy';
+        $input['password'] = Hash::make($input['password']);
+
+        User::create($input);
+     
+        return back()->withSuccess('Delivery Boy Add successfully!');
+    }
     //admin-login
 
 //    public function adminLogin(Request $request)

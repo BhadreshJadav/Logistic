@@ -103,21 +103,19 @@
         class="u-black u-border-none u-btn u-button-style u-hover-grey-75 u-btn-1">Download as PDF</a>
       <h2 class="u-align-center u-text u-text-default u-text-1">Manager Details</h2>
       <div class="u-form u-form-1">
-        <form action="#" method="get" class="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form"
+        <form action="{{ route('admin-manager-details') }}" method="get" class="u-clearfix  u-form-spacing-15 u-inner-form"
           style="padding: 15px;" source="custom">
           <div class="u-form-group u-form-name u-label-none">
             <label for="name-ef64" class="u-label">Name</label>
-            <input type="text" placeholder="Enter Name" id="name-ef64" name="name"
+            <input type="text" placeholder="Enter Name" id="name-ef64" name="search"
               class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="">
           </div>
           <div class="u-form-group u-form-submit">
-            <a href="#"
-              class="u-black u-border-none u-btn u-btn-submit u-button-style u-hover-grey-75 u-btn-2">Search</a>
+          <button class="u-black u-border-none u-btn u-btn-submit u-button-style u-hover-grey-75 u-btn-2" type="submit">Search</button>
+
             <input type="submit" value="submit" class="u-form-control-hidden">
           </div>
-          <div class="u-form-send-message u-form-send-success">#FormSendSuccess</div>
-          <div class="u-form-send-error u-form-send-message">#FormSendError</div>
-          <input type="hidden" value="" name="recaptchaResponse">
+        
         </form>
       </div>
       <div class="u-expanded-width u-table u-table-responsive u-table-1">

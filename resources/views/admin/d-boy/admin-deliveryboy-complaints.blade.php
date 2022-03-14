@@ -100,8 +100,8 @@
     <div class="u-clearfix u-sheet u-sheet-1"><span class="u-file-icon u-icon u-icon-1"
         data-href="{{url('admin-deliveryboy-main')}}" data-page-id="248970029"><img src="{{asset('images/p-images/854183161.png')}}"
           alt=""></span>
-      <a href="https://nicepage.com/joomla-page-builder"
-        class="u-black u-border-none u-btn u-button-style u-hover-grey-75 u-btn-1">Download as XLS</a>
+      <a href="{{route('export_dboycomplaint_pdf')}}"
+        class="u-black u-border-none u-btn u-button-style u-hover-grey-75 u-btn-1">Download as PDF</a>
       <h2 class="u-align-center u-text u-text-default u-text-1">Delivery Boy Complaints&nbsp;</h2>
       <div class="u-expanded-width u-table u-table-responsive u-table-1">
         <table class="u-table-entity">
@@ -121,11 +121,12 @@
               <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-5">Delete</th>
             </tr>
           </thead>
+          @foreach($data as $value)
           <tbody class="u-align-center u-grey-70 u-table-body u-table-body-1">
             <tr style="height: 57px;">
-              <td class="u-border-1 u-border-grey-50 u-table-cell">Row 1</td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell">Description</td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell">Description</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{$value->dboy_id}}</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{$value->subject}}</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{$value->description}}</td>
               <td class="u-border-1 u-border-grey-50 u-table-cell">
                 <select id="status">
                 <option value="status">Update Status</option>
@@ -134,9 +135,10 @@
                 </select>
               </td>
               <td class="u-border-1 u-border-grey-50 u-table-cell"><span
-                  class="u-file-icon u-icon u-text-white u-icon-2"><img src="{{asset('images/p-images/2.png')}}" alt=""></span>
+                  class="u-file-icon u-icon u-text-white u-icon-2" data-href="/deleteDboyComplaint/{{$value->id}}"><img src="{{asset('images/p-images/2.png')}}" alt=""></span>
               </td>
             </tr>
+            @endforeach
           </tbody>
         </table>
       </div>

@@ -7,6 +7,8 @@
   <meta name="keywords" content="Add Manager">
   <meta name="description" content="">
   <meta name="page_type" content="np-template-header-footer-from-plugin">
+  <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+
   <title>add-new-manager</title>
   <link rel="stylesheet" href="{{asset ('css/admin/nicepage.css')}}" media="screen">
   <link rel="stylesheet" href="{{asset('css/admin/add-new-manager.css')}}" media="screen">
@@ -101,6 +103,14 @@
   <section class="u-clearfix u-gradient u-section-1" id="sec-2bfb">
     <div class="u-clearfix u-sheet u-sheet-1"><span class="u-file-icon u-icon u-icon-1"
         data-href="{{url('admin-manager-main')}}" data-page-id="17044625"><img src="{{asset('images/p-images/85418319.png')}}" alt=""></span>
+        @if (session('success'))
+            <div class="card-body">
+
+                <div class="alert alert-success" role="alert">
+                    {{ session('success') }}
+                </div>
+            </div>
+        @endif
       <div class="u-clearfix u-layout-wrap u-layout-wrap-1">
         <div class="u-layout">
           <div class="u-layout-row">
@@ -114,8 +124,9 @@
                   <div class="u-container-layout u-container-layout-3">
                     <h2 class="u-text u-text-default u-text-1">Add Manager</h2>
                     <div class="u-align-center u-expanded-width u-form u-form-1">
-                      <form action="#" method="POST" class="u-clearfix u-form-spacing-16 u-form-vertical u-inner-form"
+                      <form action="{{ route('add-new-manager') }}" method="POST" class="u-clearfix u-form-spacing-16  u-inner-form"
                         source="custom" name="form" style="padding: 10px;">
+                        @csrf
                         <div class="u-form-group u-form-name u-label-top">
                           <label for="name-bcc0" class="u-label u-label-1">Name</label>
                           <input type="text" placeholder="Enter your Name" id="name-bcc0" name="name"
@@ -150,24 +161,21 @@
                       </div>
                         <div class="u-form-group u-form-phone u-label-top u-form-group-6">
                           <label for="text-979e" class="u-label u-label-6">Pincode</label>
-                          <input type="tel" id="text-979e" name="number"
+                          <input type="tel" id="text-979e" name="pincode"
                             class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-25 u-white u-input-6"
                             placeholder="Enter pincode" required="required" maxlength="10">
                         </div>
                         <div class="u-form-group u-label-top u-form-group-7">
                           <label for="text-eafe" class="u-label u-label-7">Mobile</label>
-                          <input type="text" placeholder="Enter mobile number" id="text-eafe" name="number-1"
+                          <input type="text" placeholder="Enter mobile number" id="text-eafe" name="mobile"
                             class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-25 u-white u-input-7"
                             maxlength="10" required="required">
                         </div>
-                        <div class="u-align-center u-form-group u-form-submit u-label-top">
-                          <input type="submit" value="submit" class="u-form-control-hidden">
-                          <a href=""
-                            class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-hover-palette-1-light-1 u-radius-25 u-btn-1">register</a>
+                        
+                        <button type="submit"
+                            class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1 u-hover-custom-color-2 u-radius-25 u-btn-1">submit</button>
                         </div>
-                        <div class="u-form-send-message u-form-send-success"></div>
-                        <div class="u-form-send-error u-form-send-message"></div>
-                        <input type="hidden" value="" name="recaptchaResponse">
+                       
                       </form>
                     </div>
                   </div>

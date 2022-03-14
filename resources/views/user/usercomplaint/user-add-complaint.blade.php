@@ -7,6 +7,8 @@
   <meta name="keywords" content="Add Delivery Boy​">
   <meta name="description" content="">
   <meta name="page_type" content="np-template-header-footer-from-plugin">
+  <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+
   <title>user-add-complaint</title>
   <link rel="stylesheet" href="{{asset ('css/admin/nicepage.css')}}" media="screen">
   <link rel="stylesheet" href="{{asset('css/user/user-add-complaint.css')}}" media="screen">
@@ -60,7 +62,7 @@
                       href="{{url('user-profile')}}">Profile</a>
                   </li>
                   <li class="u-nav-item"><a
-                      class="u-button-style u-grey-5 u-hover-white u-nav-link u-text-hover-palette-2-base" href="{{url('/')}}">Log
+                      class="u-button-style u-grey-5 u-hover-white u-nav-link u-text-hover-palette-2-base" href="{{url('/logout')}}">Log
                       Out</a>
                   </li>
                 </ul>
@@ -99,6 +101,14 @@
   <section class="u-clearfix u-gradient u-section-1" id="sec-51cf">
     <div class="u-clearfix u-sheet u-sheet-1"><span class="u-file-icon u-icon u-icon-1"
         data-href="{{url('user-complaint-main')}}" data-page-id="37158205"><img src="{{asset('images/p-images/8541837.png')}}" alt=""></span>
+        @if (session('success'))
+            <div class="card-body">
+
+                <div class="alert alert-success" role="alert">
+                    {{ session('success') }}
+                </div>
+            </div>
+        @endif
       <div class="u-clearfix u-layout-wrap u-layout-wrap-1">
         <div class="u-layout">
           <div class="u-layout-row">
@@ -112,28 +122,27 @@
                   <div class="u-container-layout u-container-layout-3">
                     <h2 class="u-text u-text-default u-text-1">Complaint Box</h2>
                     <div class="u-align-center u-expanded-width u-form u-form-1">
-                      <form action="#" method="POST" class="u-clearfix u-form-spacing-16 u-form-vertical u-inner-form"
+                      <form action="{{ route('user-add-complaint') }}" method="POST" class="u-clearfix u-form-spacing-16  u-inner-form"
                         source="custom" name="form" style="padding: 10px;">
+                        @csrf
                         <div class="u-form-group u-form-name u-label-top">
                           <label for="name-bcc0" class="u-label u-label-1">Subject</label>
-                          <input type="text" placeholder="Enter subject" id="name-bcc0" name="text"
+                          <input type="text" placeholder="Enter subject" id="subject" name="subject"
                             class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-25 u-white u-input-1"
                             required="" autofocus="autofocus">
                         </div>
                         <div class="u-form-group u-form-message u-label-top">
                           <label for="email-bcc0" class="u-label u-label-2">Description</label>
-                          <textarea placeholder="Enter discription" id="email-bcc0" name="text-1"
+                          <textarea placeholder="Enter discription" id="description" name="description"
                             class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-25 u-white u-input-2"
                             required="required"></textarea>
                         </div>
                         <div class="u-align-center u-form-group u-form-submit u-label-top">
-                          <input type="submit" value="submit" class="u-form-control-hidden">
-                          <a href="#"
-                            class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1 u-hover-custom-color-2 u-radius-25 u-btn-1">submit</a>
+                
+                          <button type="submit"
+                            class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1 u-hover-custom-color-2 u-radius-25 u-btn-1">submit</button>
                         </div>
-                        <div class="u-form-send-message u-form-send-success"></div>
-                        <div class="u-form-send-error u-form-send-message"></div>
-                        <input type="hidden" value="" name="recaptchaResponse">
+                       
                       </form>
                     </div>
                   </div>
