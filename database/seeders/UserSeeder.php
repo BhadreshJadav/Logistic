@@ -20,67 +20,106 @@ class UserSeeder extends Seeder
         User::truncate();
         DB::table('users')->insert([
             [
-                'name'=>'Admin',
-                'email'=>'admin@gmail.com',
-                'password'=>Hash::make('admin'),
+                'name'=>'Binal Bhaliya',
+                'email'=>'binal@gmail.com',
+                'password'=>Hash::make('binal'),
+                'city'=>'Surat',
+                'mobile'=>'8976576754',
+                'area'=>null,
+                'pincode'=>null,
+                'role'=>'user'
+            ],
+            [
+                'name'=>'Nensi Dhamelia',
+                'email'=>'nensi@gmail.com',
+                'password'=>Hash::make('nensi'),
+                'city'=>'Ahmedabad',
+                'mobile'=>'8976590754',
+                'area'=>null,
+                'pincode'=>null,
+                'role'=>'user'
+            ],
+            [
+                'name'=>'Harshid Kukadiya',
+                'email'=>'harshid@gmail.com',
+                'password'=>Hash::make('harshid'),
+                'city'=>'Aanand',
+                'mobile'=>'8967576754',
+                'area'=>null,
+                'pincode'=>null,
+                'role'=>'user'
+            ],
+            [
+                'name'=>'Rutvik Jagani',
+                'email'=>'rutvik@gmail.com',
+                'password'=>Hash::make('rutvik'),
                 'mobile'=>'9823457687',
                 'role'=>'admin',
-                'city'=>null,
+                'city'=>'surat',
                 'area'=>null,
                 'pincode'=>null
-
             ],
             [
-                'name'=>'Savani Utsav',
-                'email'=>'utsav@gmail.com',
-                'password'=>Hash::make('utsav'),
-                'mobile'=>'9823457687',
-                'role'=>'delivery-boy',
-                'city'=>'surat',
-                'area'=>'varachha',
-                'pincode'=>'395006'
-
-            ],
-            [
-                'name'=>'Devani Trunal',
-                'email'=>'trunal@gmail.com',
-                'password'=>Hash::make('trunal'),
-                'mobile'=>'9856567687',
-                'role'=>'delivery-boy',
-                'city'=>'surat',
-                'area'=>'Katargam',
-                'pincode'=>'395004'
-            ],
-            [
-                'name'=>'Patel Reena',
-                'email'=>'reena@gmail.com',
-                'password'=>Hash::make('reena'),
-                'mobile'=>'9823654687',
-                'role'=>'delivery-boy',
-                'city'=>'surat',
-                'area'=>'Amroli',
-                'pincode'=>'395032'
-            ],
-            [
-                'name'=>'Vaghela Dhruvit',
+                'name'=>'Dhruvit Vaghela',
                 'email'=>'dhruvit@gmail.com',
                 'password'=>Hash::make('dhruvit'),
-                'mobile'=>'9823457687',
-                'role'=>'delivery-boy',
-                'city'=>'surat',
-                'area'=>'Pal',
-                'pincode'=>'395002'
+                'city'=>'Surat',
+                'area'=>'Katargam',
+                'pincode'=>'789876',
+                'mobile'=>'8975678754',
+                'role'=>'delivery-boy'
             ],
             [
-                'name'=>'Patel Manav',
-                'email'=>'manav@gmail.com',
-                'password'=>Hash::make('manav'),
-                'mobile'=>'9823457687',
-                'role'=>'delivery-boy',
-                'city'=>'surat',
-                'area'=>'Jakatnaka',
-                'pincode'=>'395054'
+                'name'=>'Parth Jagani',
+                'email'=>'parth@gmail.com',
+                'password'=>Hash::make('parth'),
+                'city'=>'Surat',
+                'area'=>'Amroli',
+                'pincode'=>'390001',
+                'mobile'=>'8976895754',
+                'role'=>'delivery-boy'
+            ],
+            [
+                'name'=>'Fenil Harsoda',
+                'email'=>'fenil@gmail.com',
+                'password'=>Hash::make('fenil'),
+                'city'=>'Ahmedabad',
+                'area'=>'Vastral',
+                'pincode'=>'390022',
+                'mobile'=>'8967906754',
+                'role'=>'delivery-boy'
+            ],
+            [
+                'name'=>'Pratik Bhingradiya',
+                'email'=>'pratik@gmail.com',
+                'password'=>Hash::make('pratik'),
+                'city'=>'Surat',
+                'area'=>'mota varachha',
+                'pincode'=>'390004',
+                'mobile'=>'8975564754',
+                'role'=>'manager'
+            ],
+            [
+                'name'=>'Sanjay Patel',
+                'email'=>'sanjay@gmail.com',
+                'password'=>Hash::make('sanjay'),
+                'city'=>'Ahmedabad',
+                'area'=>'SG Highway',
+                'pincode'=>'390066',
+                'mobile'=>'8974367754',
+                'role'=>'manager'
+            ],
+            [
+                'name'=>'Nikunj Jadav',
+                'email'=>'nikunj@gmail.com',
+                'password'=>Hash::make('nikunj'),
+                'city'=>'Aanand',
+                'area'=>'Main Bajar',
+                'pincode'=>'390065',
+                'mobile'=>'8967564754',
+                'role'=>'manager'
             ]
+
         ]);
-    }
+    } 
 }

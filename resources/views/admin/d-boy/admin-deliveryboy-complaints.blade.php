@@ -135,7 +135,7 @@
                 </select>
               </td>
               <td class="u-border-1 u-border-grey-50 u-table-cell"><span
-                  class="u-file-icon u-icon u-text-white u-icon-2" data-href="/deleteDboyComplaint/{{$value->id}}"><img src="{{asset('images/p-images/2.png')}}" alt=""></span>
+                  class="u-file-icon u-icon u-text-white u-icon-2" data-href="/deleteAdminOrder/{{$value->id}}"><img src="{{asset('images/p-images/2.png')}}" alt=""></span>
               </td>
             </tr>
             @endforeach

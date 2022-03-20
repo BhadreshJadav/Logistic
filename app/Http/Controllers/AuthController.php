@@ -99,7 +99,12 @@ class AuthController extends Controller
         return $pdf->download('deliveryboy.pdf');
     }
 
-
+    //manager delete dboy
+     public function deleteDboyData($id)
+    {
+        user::find($id)->delete();
+        return redirect('manager-deliveryboy-details');
+    }
 
 
 
@@ -283,11 +288,25 @@ class AuthController extends Controller
     {       
             $user = Auth::user();
             $data = User::where('role','delivery-boy' );
-            
+            if (isset($request->search) && $request->search) {
+                $data->where('name', 'like' ,'%'.$request->search.'%');
+            }
             $data = $data->get();
 
             return view("manager/manager-dboy/manager-deliveryboy-details",compact('data'));
     }
+  //manager export dboy details as a pdf
+  
+  public function exportDboyDetails()
+  { 
+      $user = Auth::user();
+     $data = User::where('role','delivery-boy');
+      $pdf = PDF::loadView('pdf.Dboydetails',[
+          'data'=>$data
+      ]);
+      return $pdf->download('DboyDetails.pdf');
+  }
+
     
     //manager add dboy
     public function addDboy(Request $request)

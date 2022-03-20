@@ -99,25 +99,20 @@
   <section class="u-clearfix u-section-1" id="sec-74aa">
     <div class="u-clearfix u-sheet u-sheet-1"><span class="u-file-icon u-icon u-icon-1"
         data-href="{{url('admin-order-main')}}" data-page-id="1663311763"><img src="{{asset('images/p-images/854183162.png')}}" alt=""></span>
-      <a href="https://nicepage.com/joomla-page-builder"
-        class="u-black u-border-none u-btn u-button-style u-hover-grey-75 u-btn-1">Download as XLS</a>
+      <a href="{{route('export_CurrentOrder_pdf')}}"
+        class="u-black u-border-none u-btn u-button-style u-hover-grey-75 u-btn-1">Download as PDF</a>
       <h2 class="u-align-center u-text u-text-default u-text-1">Current Orders Details</h2>
       <div class="u-form u-form-1">
-        <form action="#" method="POST" class="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form"
+      <form action="{{ route('admin-current-order') }}" method="get" class="u-clearfix  u-form-spacing-15 u-inner-form"
           style="padding: 15px;" source="custom">
           <div class="u-form-group u-form-name u-label-none">
             <label for="name-ef64" class="u-label">Name</label>
-            <input type="text" placeholder="Enter AWB number" id="name-ef64" name="name"
-              class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="">
+            <input type="search" placeholder="Enter User id or Name" id="name-ef64" name="search"
+              class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="" value="">`
           </div>
           <div class="u-form-group u-form-submit">
-            <a href="#"
-              class="u-black u-border-none u-btn u-btn-submit u-button-style u-hover-grey-75 u-btn-2">Search</a>
-            <input type="submit" value="submit" class="u-form-control-hidden">
+            <button class="u-black u-border-none u-btn u-btn-submit u-button-style u-hover-grey-75 u-btn-2" type="submit">Search</button>
           </div>
-          <div class="u-form-send-message u-form-send-success">#FormSendSuccess</div>
-          <div class="u-form-send-error u-form-send-message">#FormSendError</div>
-          <input type="hidden" value="" name="recaptchaResponse">
         </form>
       </div>
       <div class="u-expanded-width u-table u-table-responsive u-table-1">
@@ -136,15 +131,17 @@
               <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-4">Delete</th>
             </tr>
           </thead>
+          @foreach($data as $value)
           <tbody class="u-align-center u-grey-70 u-table-body u-table-body-1">
             <tr style="height: 57px;">
-              <td class="u-border-1 u-border-grey-50 u-table-cell">Row 1</td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell"></td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell">Description</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{$value->user_id}}</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{$value->status}}</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{$value->awb_no}}</td>
               <td class="u-border-1 u-border-grey-50 u-table-cell"><span
-                  class="u-file-icon u-icon u-text-white u-icon-2"><img src="{{asset('images/p-images/21.png')}}" alt=""></span>
+                  class="u-file-icon u-icon u-text-white u-icon-2" data-href="/deleteAdminOrder/{{$value->id}}"><img src="{{asset('images/p-images/21.png')}}" alt=""></span>
               </td>
             </tr>
+            @endforeach
           </tbody>
         </table>
       </div>

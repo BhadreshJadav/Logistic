@@ -53,6 +53,7 @@ class ComplaintController extends Controller
     public function showDboy(Request $request)
     {
         $user = Auth::user();
+     
 
         $data = dboy_complaint::all();
         return view("deliveryboy.dboy-complaint.deliveryboy-view-complaint", compact('data'));

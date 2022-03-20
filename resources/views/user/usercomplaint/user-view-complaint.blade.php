@@ -111,14 +111,16 @@
           </colgroup>
           <thead class="u-align-center u-grey-80 u-table-header u-table-header-1">
             <tr style="height: 36px;">
-              <th class="u-border-1 u-border-grey-50 u-table-cell">Subject</th>
+            <th class="u-border-1 u-border-grey-50 u-table-cell">User_ID</th>
+            <th class="u-border-1 u-border-grey-50 u-table-cell">Subject</th>
               <th class="u-border-1 u-border-grey-50 u-table-cell">Description</th>
               <th class="u-border-1 u-border-grey-50 u-table-cell">Status</th>
             </tr>
           </thead>
-          @foreach($data as $value)
+          @foreach($data as $value) 
           <tbody class="u-align-center u-grey-70 u-table-body u-table-body-1">
             <tr style="height: 52px;">
+            <td class="u-border-1 u-border-grey-50 u-table-cell">{{$value->user_id}}</td>
               <td class="u-border-1 u-border-grey-50 u-table-cell">{{$value->subject}}</td>
               <td class="u-border-1 u-border-grey-50 u-table-cell">{{$value->description}}</td>
               <td class="u-border-1 u-border-grey-50 u-table-cell">Description</td>

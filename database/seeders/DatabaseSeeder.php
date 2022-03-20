@@ -16,7 +16,11 @@ class DatabaseSeeder extends Seeder
     {
        \Schema::disableForeignKeyConstraints();
         $this->call([
-            UserSeeder::class
+
+            users::class,
+            UserSeeder::class,
+          orderSeeder::class
+
         ]);
         \Schema::enableForeignKeyConstraints();
         // \App\Models\User::factory(10)->create();

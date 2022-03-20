@@ -238,7 +238,7 @@ c5.5,0,9.9,4.5,9.9,9.9V73.3z"></path>
             </button>
             <input class="u-search-input" type="search" name="search" value="" placeholder="Search">
           </form>
-          <a href="https://nicepage.com/static-site-generator"
+          <a href="{{url('/tracking')}}"
             class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-15 u-btn-1">
             Track &amp; Trace</a>
         </div>

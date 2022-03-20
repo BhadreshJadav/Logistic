@@ -134,15 +134,17 @@
               <th class="u-border-1 u-border-grey-50 u-table-cell">AWB Number</th>
             </tr>
           </thead>
+          @foreach($data as $value)
           <tbody class="u-align-center u-grey-70 u-table-body u-table-body-1">
             <tr style="height: 52px;">
-              <td class="u-border-1 u-border-grey-50 u-table-cell">Row 1</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{$value->user_id}}</td>
               <td class="u-border-1 u-border-grey-50 u-table-cell">
                 <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-3"
-                  href="{{url('manager-order-update-status')}}" data-page-id="9103720">Description</a>
+                  href="{{url('manager-order-update-status')}}" data-page-id="9103720">{{$value->status}}</a>
               </td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell">Description</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{$value->awb_no}}</td>
             </tr>
+            @endforeach
           </tbody>
         </table>
       </div>

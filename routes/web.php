@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 
 use App\Http\Controllers\ComplaintController;
+use App\Http\Controllers\orderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -103,7 +104,10 @@ route::view("manager-home",'manager/manager-home');
 route::view("manager-profile",'manager/manager-profile');
 route::view("manager-order-main",'manager/managerorder/manager-order-main');
 route::view("manager-complete-order",'manager/managerorder/manager-complete-order');
+route::get("/manager-complete-order",[orderController::class,'showManagerCompleteOrder'])->name('manager-complete-order');
 route::view("manager-current-order",'manager/managerorder/manager-current-order');
+route::get("/manager-current-order",[orderController::class,'showManagerCurrentOrder'])->name('manager-current-order');
+
 route::view("manager-order-update-status",'manager/managerorder/manager-order-update-status');
 
 route::view("manager-deliveryboy-main",'manager/manager-dboy/manager-deliveryboy-main');
@@ -111,6 +115,7 @@ route::view("add-new-deliveryboy",'manager/manager-dboy/add-new-deliveryboy');
 route::post("add-new-deliveryboy",[AuthController::class, 'addDboy'])->name('add-new-deliveryboy');
 route::view("manager-deliveryboy-details",'manager/manager-dboy/manager-deliveryboy-details');
 route::get("/manager-deliveryboy-details",[AuthController::class,'getDboyData'])->name('manager-deliveryboy-details');
+route::get("/export_DboyDetails_pdf",[AuthController::class,'exportDboyDetails'])->name('export_DboyDetails_pdf');
 
 Route::group(['middleware' => ['auth']], function () {
 
@@ -126,7 +131,13 @@ Route::group(['middleware' => ['auth']], function () {
    
     route::view("admin-order-main",'admin/orders/admin-order-main');
     route::view("admin-current-order",'admin/orders/admin-current-order');
+    route::get("/admin-current-order",[orderController::class,'showOrder'])->name('admin-current-order');
+    route::get("/export_CurrentOrder_pdf",[orderController::class,'exportCurrentOrderDetails'])->name('export_CurrentOrder_pdf');
+
     route::view("admin-completed-order",'admin/orders/admin-completed-order');
+    route::get("/admin-completed-order",[orderController::class,'showCompleteOrder'])->name('admin-completed-order');
+    route::get("/export_CompleteOrder_pdf",[orderController::class,'exportCompleteOrderDetails'])->name('export_CompleteOrder_pdf');
+
     route::view("admin-manager-main",'admin/manager/admin-manager-main');
     route::get("/admin-manager-details",[AuthController::class,'getManagerData'])->name('admin-manager-details');
     route::view("add-new-manager",'admin/manager/add-new-manager');
@@ -159,6 +170,11 @@ route::get("/deleteDeliveryBoyData/{id}",[AuthController::class,'deleteDeliveryB
 
 route::get("/deleteUserComplaint/{id}",[ComplaintController::class,'deleteUserComplaint']);
 route::get("/deleteDboyComplaint/{id}",[ComplaintController::class,'deleteDboyComplaint']);
+
+route::get("/deleteAdminOrder/{id}",[orderController::class,'deleteAdminOrder']);
+route::get("/deleteCompleteOrder/{id}",[orderController::class,'deleteCompleteOrder']);
+
+route::get("/deleteDboyData/{id}",[AuthController::class,'deleteDboyData']);
 
 
 
