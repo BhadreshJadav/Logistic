@@ -143,15 +143,17 @@
             </tr>
           </thead>
           <tbody class="u-align-center u-grey-70 u-table-body u-table-body-1">
+          @foreach($data as $order)
             <tr style="height: 52px;">
-              <td class="u-border-1 u-border-grey-50 u-table-cell">Row 1</td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell"></td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell"></td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell"></td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell"></td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell">Description</td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell">Description</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{ @$order->user->id }}</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{ @$order->user->city }}</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{ @$order->user->area ?? '-' }}</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{ @$order->user->pincode ?? '-' }}</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{ @$order->user->mobile }}</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{ $order->status }}</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{ $order->awb_no }}</td>
             </tr>
+          @endforeach
           </tbody>
         </table>
       </div>

@@ -38,7 +38,7 @@ class ComplaintController extends Controller
 
         return back()->withSuccess('Complaint submitted successfully!');
     }
-    
+
     //user show only his complaint
     public function showUser(Request $request)
     {
@@ -53,15 +53,13 @@ class ComplaintController extends Controller
     public function showDboy(Request $request)
     {
         $user = Auth::user();
-     
-
-        $data = dboy_complaint::all();
+        $data = $user->complaints;
         return view("deliveryboy.dboy-complaint.deliveryboy-view-complaint", compact('data'));
     }
 
     //admin show all dboy complaint
     public function showDboyComplaint(Request $request)
-    {   
+    {
 
     $data = dboy_complaint::all();
         return view("admin.d-boy.admin-deliveryboy-complaints", compact('data'));
@@ -84,7 +82,7 @@ class ComplaintController extends Controller
         $data = user_complaint::all();
         return view("admin.user.admin-user-complaints", compact('data'));
     }
-   
+
     //admin download user complaint as pdf
     public function  exportUserComplaint()
     {
@@ -102,7 +100,7 @@ class ComplaintController extends Controller
        user_complaint::find($id)->delete();
         return redirect('admin-user-complaints');
     }
-   
+
     //admin delete dboy complaint
 
     public function deleteDboyComplaint($id)

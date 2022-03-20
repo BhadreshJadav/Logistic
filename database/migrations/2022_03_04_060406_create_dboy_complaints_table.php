@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('dboy_complaints', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('dboy_id')->unsigned();
             $table->string('subject');
             $table->longText('description');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            
+            $table->foreign('dboy_id')->references('id')->on('users')->onDelete('cascade');
+
         });
     }
 

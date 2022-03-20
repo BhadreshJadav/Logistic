@@ -105,28 +105,32 @@
         <div class="u-container-layout u-container-layout-1">
           <h3 class="u-align-center u-text u-text-default u-text-2">Status Update<span style="font-weight: 700;"></span>
           </h3>
-
+            <form action="{{ route('update.status') }}" method="post">
+                @csrf
           <div class="orderstatus">
-       <select id="orderupdatestatus">
-          <label for ="Order Update Status"></label>
-                 <option value="pick up">Pick Up</option>
-                 <option value="city warehouse">City Warehouse</option>
-                 <option value="area warehouse">Area Warehouse</option>
-                 <option value="shipped">Shipped</option>
-                 <option value="donep">Done</option>
+              <label for ="orderupdatestatus"></label>
+                <select id="orderupdatestatus" name="status">
+                 <option value="Pick Up" @if($data->status === 'Pick Up') selected @endif>Pick Up</option>
+                 <option value="City Warehouse" @if($data->status === 'City Warehouse') selected @endif>City Warehouse</option>
+                 <option value="Area Warehouse" @if($data->status === 'Area Warehouse') selected @endif>Area Warehouse</option>
+                 <option value="Shipped" @if($data->status === 'Shipped') selected @endif>Shipped</option>
+                 <option value="Done" @if($data->status === 'Done') selected @endif>Done</option>
                 </select>
               </div>
+                <input type="hidden" name="order_id" value="{{ $data->id }}">
 
           <div class="u-align-center u-container-style u-group u-shape-rectangle u-group-2">
             <div class="u-container-layout u-container-layout-2">
-              <h6 class="u-text u-text-grey-40 u-text-3">User ID :&nbsp;<br>
-                <br>AWB Number :
+              <h6 class="u-text u-text-grey-40 u-text-3">User ID : {{ $data->user_id }}<br>
+                <br>AWB Number : {{ $data->awb_no }}
               </h6>
             </div>
           </div>
-          <a href="https://nicepage.dev"
-            class="u-black u-border-none u-btn u-button-style u-hover-palette-1-dark-1 u-btn-1">UpdATE STATUS</a>
+          <button href="#" type="submit"
+            class="u-black u-border-none u-btn u-button-style u-hover-palette-1-dark-1 u-btn-1">UpdATE STATUS</button>
+            </form>
         </div>
+
       </div>
     </div>
   </section>

@@ -16,7 +16,7 @@ class orderController extends Controller
         return view("admin.orders.admin-current-order", compact('data'));
     }
     //admin export as a pdf current order
-    
+
     public function exportCurrentOrderDetails()
     {
         $data = order::all()->whereIn('status',['Pick Up','City Warehouse','Shipped','Area Warehaouse']);
@@ -48,7 +48,7 @@ class orderController extends Controller
     }
 
     //admin export as a pdf complete order
-    
+
     public function exportCompleteOrderDetails()
     {
         $data = order::all()->where('status','Done');
@@ -61,14 +61,51 @@ class orderController extends Controller
    //manager show completed order
    public function showManagerCompleteOrder(Request $request)
    {
-       $data = order::all()->where('status','Done');
+       $user = Auth::user();
+       $city = $user->city;
+       $data = order::with('user')->whereHas('user', function ($query) use ($city) {
+           $query->where('city', $city);
+       })->where('status','Done')->get();
        return view("manager.managerorder.manager-complete-order", compact('data'));
    }
-   
-   //manager show current order 
+
+   //manager show current order
    public function showManagerCurrentOrder(Request $request)
    {
-    $data = order::all()->whereIn('status',['Pick Up','City Warehouse','Shipped','Area Warehaouse']);
-    return view("manager.managerorder.manager-current-order", compact('data'));
+       $user = Auth::user();
+       $city = $user->city;
+       $data = order::with('user')->whereHas('user', function ($query) use ($city) {
+           $query->where('city', $city);
+       })->whereIn('status',['Pick Up','City Warehouse','Shipped','Area Warehouse'])->get();
+       return view("manager.managerorder.manager-current-order", compact('data'));
+   }
+
+   public function showDboyCurrentOrder(Request $request)
+   {
+       $user = Auth::user();
+       $city = $user->city;
+       $data = order::with('user')->whereHas('user', function ($query) use ($city) {
+           $query->where('city', $city);
+       })->get();
+        return view("deliveryboy.dboy-order.deliveryboy-order", compact('data'));
+   }
+
+   public function manageOrderStatus($id) {
+        $data = order::with('user')->find($id);
+       return view("manager.managerorder.manager-order-update-status", compact('data'));
+   }
+
+   public function updateOrderStatus(Request $request) {
+        $input = $request->all();
+        $order = order::find($input['order_id'])->update(['status' => $input['status']]);
+
+        return redirect('manager-current-order');
+   }
+
+   public function trackOrder(Request $request) {
+        $order = order::where('awb_no', $request->search)->first();
+
+       return view("tracking.tracking", compact('order'));
+
    }
 }

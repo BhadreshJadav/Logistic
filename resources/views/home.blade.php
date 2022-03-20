@@ -207,7 +207,7 @@ c5.5,0,9.9,4.5,9.9,9.9V73.3z"></path>
               <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
             </div>
           </nav>
-          
+
           <button
             class="u-btn u-btn-round u-button-style u-dialog-link u-gradient u-none u-radius-4 u-text-body-alt-color u-btn-1"
             onclick="window.location.href='/signup'">
@@ -229,18 +229,19 @@ c5.5,0,9.9,4.5,9.9,9.9V73.3z"></path>
             data-animation-direction="">Safe &amp; Faster</h3>
           <h1 class="u-align-center u-custom-font u-font-roboto-condensed u-text u-text-2" data-animation-name="fadeIn"
             data-animation-duration="2000" data-animation-direction="">Logistics</h1>
-          <form action="#" method="get"
+          <form action="{{ route('tracking') }}" method="post"
             class="u-align-center u-border-1 u-border-black u-expanded-width-xs u-radius-21 u-search u-search-left u-white u-search-1">
-            <button class="u-search-button" type="submit">
+              @csrf
+            <button class="u-search-button">
               <span class="u-file-icon u-search-icon u-spacing-10 u-search-icon-1">
                 <img src="{{asset ('images/13327132.png')}}" alt="">
               </span>
             </button>
             <input class="u-search-input" type="search" name="search" value="" placeholder="Search">
-          </form>
-          <a href="{{url('/tracking')}}"
+          <button type="submit"
             class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-15 u-btn-1">
-            Track &amp; Trace</a>
+            Track &amp; Trace</button>
+          </form>
         </div>
       </div>
     </div>

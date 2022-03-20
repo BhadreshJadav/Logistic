@@ -140,7 +140,7 @@
               <td class="u-border-1 u-border-grey-50 u-table-cell">{{$value->user_id}}</td>
               <td class="u-border-1 u-border-grey-50 u-table-cell">
                 <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-3"
-                  href="{{url('manager-order-update-status')}}" data-page-id="9103720">{{$value->status}}</a>
+                  href="{{url('manager-order-update-status/'.$value->id)}}" data-page-id="9103720">{{$value->status}}</a>
               </td>
               <td class="u-border-1 u-border-grey-50 u-table-cell">{{$value->awb_no}}</td>
             </tr>

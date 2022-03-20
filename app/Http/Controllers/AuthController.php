@@ -18,7 +18,7 @@ use phpDocumentor\Reflection\Types\Null_;
 use PDF;
 
 class AuthController extends Controller
-{   
+{
     public function getUserData(Request $request)
     {
             $data = User::where('role','user');
@@ -79,7 +79,7 @@ class AuthController extends Controller
         return $pdf->download('users.pdf');
     }
 
-    
+
 
     public function exportManagerDetails()
     {
@@ -279,15 +279,16 @@ class AuthController extends Controller
         $input['password'] = Hash::make($input['password']);
 
         User::create($input);
-     
+
         return back()->withSuccess('Manager Add successfully!');
     }
 
     //manager show dboy details
     public function getDboyData(Request $request)
-    {       
+    {
             $user = Auth::user();
-            $data = User::where('role','delivery-boy' );
+            $city = $user->city;
+            $data = User::where('role','delivery-boy' )->where('city', $city);
             if (isset($request->search) && $request->search) {
                 $data->where('name', 'like' ,'%'.$request->search.'%');
             }
@@ -296,9 +297,9 @@ class AuthController extends Controller
             return view("manager/manager-dboy/manager-deliveryboy-details",compact('data'));
     }
   //manager export dboy details as a pdf
-  
+
   public function exportDboyDetails()
-  { 
+  {
       $user = Auth::user();
      $data = User::where('role','delivery-boy');
       $pdf = PDF::loadView('pdf.Dboydetails',[
@@ -307,7 +308,7 @@ class AuthController extends Controller
       return $pdf->download('DboyDetails.pdf');
   }
 
-    
+
     //manager add dboy
     public function addDboy(Request $request)
     {
@@ -318,7 +319,7 @@ class AuthController extends Controller
         $input['password'] = Hash::make($input['password']);
 
         User::create($input);
-     
+
         return back()->withSuccess('Delivery Boy Add successfully!');
     }
     //admin-login

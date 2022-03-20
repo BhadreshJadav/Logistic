@@ -49,4 +49,12 @@ class User extends Authenticatable
     ];
 
     public $table="users";
+
+    public function complaints() {
+        return $this->hasMany(dboy_complaint::class, 'dboy_id', 'id');
+    }
+
+    public function orders() {
+        return $this->hasMany(Order::class, 'user_id', 'id');
+    }
 }

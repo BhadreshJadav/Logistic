@@ -108,7 +108,9 @@ route::get("/manager-complete-order",[orderController::class,'showManagerComplet
 route::view("manager-current-order",'manager/managerorder/manager-current-order');
 route::get("/manager-current-order",[orderController::class,'showManagerCurrentOrder'])->name('manager-current-order');
 
-route::view("manager-order-update-status",'manager/managerorder/manager-order-update-status');
+//route::post("manager-order-update-status",'manager/managerorder/manager-order-update-status');
+route::get("manager-order-update-status/{id}",[orderController::class, 'manageOrderStatus'])->name('manager-order-update-status');
+route::post("update-order-status",[orderController::class, 'updateOrderStatus'])->name('update.status');
 
 route::view("manager-deliveryboy-main",'manager/manager-dboy/manager-deliveryboy-main');
 route::view("add-new-deliveryboy",'manager/manager-dboy/add-new-deliveryboy');
@@ -126,9 +128,9 @@ Route::group(['middleware' => ['auth']], function () {
 
     route::get("/admin-user-details",[AuthController::class,'getUserData'])->name('admin-user-details');
     route::get("/export_user_pdf",[AuthController::class,'exportUserDetails'])->name('export_user_pdf');
-   
-   
-   
+
+
+
     route::view("admin-order-main",'admin/orders/admin-order-main');
     route::view("admin-current-order",'admin/orders/admin-current-order');
     route::get("/admin-current-order",[orderController::class,'showOrder'])->name('admin-current-order');
@@ -192,7 +194,7 @@ route::get("/user-view-complaint",[ComplaintController::class,'showUser'])->name
 route::view("deliveryboy-home",'deliveryboy/deliveryboy-home');
 route::view("deliveryboy-profile",'deliveryboy/deliveryboy-profile');
 
-route::view("deliveryboy-order",'deliveryboy/dboy-order/deliveryboy-order');
+route::get("deliveryboy-order",[orderController::class, 'showDboyCurrentOrder']);
 
 route::view("deliveryboy-add-complaint",'deliveryboy/dboy-complaint/deliveryboy-add-complaint');
 route::post("deliveryboy-add-complaint",[ComplaintController::class, 'store'])->name('deliveryboy-add-complaint');
@@ -200,7 +202,8 @@ route::view("deliveryboy-complaint-main",'deliveryboy/dboy-complaint/deliveryboy
 route::get("/deliveryboy-view-complaint",[ComplaintController::class,'showDboy'])->name('deliveryboy-view-complaint');
 
 
-route::view("tracking",'tracking/tracking');
+//route::view("tracking",'tracking/tracking');
+route::post("tracking",[orderController::class, 'trackOrder'])->name('tracking');
 route::view("index",'tracking/index');
 
 
