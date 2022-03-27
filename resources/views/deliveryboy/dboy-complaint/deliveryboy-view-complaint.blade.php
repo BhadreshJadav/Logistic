@@ -100,7 +100,7 @@
     <div class="u-clearfix u-sheet u-sheet-1"><span class="u-file-icon u-icon u-icon-1"
         data-href="{{url('deliveryboy-complaint-main')}}" data-page-id="603700979"><img src="{{asset('images/p-images/85418310.png')}}"
           alt=""></span>
-      <a href=""
+      <a href="{{route('export_DboyComplaint_pdf')}}"
         class="u-black u-border-none u-btn u-button-style u-hover-grey-75 u-btn-1">Download as PDF</a>
       <h2 class="u-align-center u-text u-text-default u-text-1">Your Complaint Status</h2>
       <div class="u-expanded-width u-table u-table-responsive u-table-1">
@@ -112,6 +112,8 @@
           </colgroup>
           <thead class="u-align-center u-grey-80 u-table-header u-table-header-1">
             <tr style="height: 36px;">
+            <th class="u-border-1 u-border-grey-50 u-table-cell">DeliveryBoy ID</th>
+
               <th class="u-border-1 u-border-grey-50 u-table-cell">Subject</th>
               <th class="u-border-1 u-border-grey-50 u-table-cell">Description</th>
               <th class="u-border-1 u-border-grey-50 u-table-cell">Status</th>
@@ -120,9 +122,11 @@
           @foreach($data as $value)
           <tbody class="u-align-center u-grey-70 u-table-body u-table-body-1">
             <tr style="height: 52px;">
+            <td class="u-border-1 u-border-grey-50 u-table-cell">{{$value->dboy_id}}</td>
+
               <td class="u-border-1 u-border-grey-50 u-table-cell">{{$value->subject}}</td>
               <td class="u-border-1 u-border-grey-50 u-table-cell">{{$value->description}}</td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell">Description</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{$value->status}}</td>
             </tr>
             @endforeach
           </tbody>

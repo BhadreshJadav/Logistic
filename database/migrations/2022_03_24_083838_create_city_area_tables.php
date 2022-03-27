@@ -13,16 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('dboy_complaints', function (Blueprint $table) {
+        Schema::create('cities', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('dboy_id')->unsigned();
-            $table->string('subject');
-            $table->longText('description');
-            $table->string('status');
+            $table->string('name');
             $table->timestamps();
-
-            $table->foreign('dboy_id')->references('id')->on('users')->onDelete('cascade');
-
+        });
+        Schema::create('areas', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->integer('city_id');
+            $table->timestamps();
         });
     }
 
@@ -33,6 +33,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dboy_complaints');
+        Schema::drop('cities');
+        Schema::drop('areas');
+
     }
 };

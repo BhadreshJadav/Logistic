@@ -99,22 +99,20 @@
   <section class="u-clearfix u-section-1" id="sec-26bf">
     <div class="u-clearfix u-sheet u-sheet-1"><span class="u-file-icon u-icon u-icon-1"
         data-href="{{url('manager-order-main')}}" data-page-id="414128621"><img src="{{asset('images/p-images/854183.png')}}" alt=""></span>
-      <a href="https://nicepage.com/joomla-page-builder"
-        class="u-black u-border-none u-btn u-button-style u-hover-grey-75 u-btn-1">Download as XLS</a>
+      <a href="{{route('export_completeorder_pdf')}}"
+        class="u-black u-border-none u-btn u-button-style u-hover-grey-75 u-btn-1">Download as PDF</a>
       <h2 class="u-align-center u-text u-text-default u-text-1">Completed Orders Details</h2>
       <div class="u-form u-form-1">
-        <form action="{{ route('manager-complete-order') }}" method="get" class="u-clearfix  u-form-spacing-15 u-inner-form"
-          style="padding: 15px;" source="custom">
-          <div class="u-form-group u-form-name u-label-none">
+      <form action="{{ route('manager-complete-order') }}" method="get" class="u-clearfix  u-form-spacing-15 u-inner-form"
+          style="padding: 15px;" source="custom" display="inline">
+          <div class="u-form-group u-form-name u-label-none fg">
             <label for="name-ef64" class="u-label">Name</label>
-            <input type="text" placeholder="Enter AWB number" id="name-ef64" name="search"
-              class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="">
+            <input type="search" placeholder="Enter AWB Number" id="name-ef64" name="search"
+              class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="" value="">
           </div>
-          <div class="u-form-group u-form-submit">
-          <button class="u-black u-border-none u-btn u-btn-submit u-button-style u-hover-grey-75 u-btn-2" type="submit">Search</button>
+          <div class="u-form-group u-form-submit fg">
+            <button class="u-black u-border-none u-btn u-btn-submit u-button-style u-hover-grey-75 u-btn-2" type="submit">Search</button>
           </div>
-         
-          <input type="hidden" value="" name="recaptchaResponse">
         </form>
       </div>
       <div class="u-expanded-width u-table u-table-responsive u-table-1">

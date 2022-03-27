@@ -124,6 +124,7 @@
                 <br>
                 <span style="font-size: 1rem;"> <b>Email ID</b> : {{ $user->email ?? '-' }}
                     <br> <b>City</b> : {{ $user->city ?? '-' }}
+                    <br> <b>Area</b> : {{ $user->area ?? '-' }}
                     <br> <b>Mobile</b> : {{ $user->mobile ?? '-' }}
                 </span>
                 <br>

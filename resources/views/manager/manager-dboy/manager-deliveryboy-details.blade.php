@@ -106,12 +106,12 @@
       <div class="u-form u-form-1">
         <form action="{{ route('manager-deliveryboy-details') }}"  method="get" class="u-clearfix  u-form-spacing-15 u-inner-form"
           style="padding: 15px;" source="custom">
-          <div class="u-form-group u-form-name u-label-none">
+          <div class="u-form-group u-form-name u-label-none fg">
             <label for="name-ef64" class="u-label">Name</label>
             <input type="text" placeholder="Enter Name" id="name-ef64" name="search"
               class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="">
           </div>
-          <div class="u-form-group u-form-submit">
+          <div class="u-form-group u-form-submit fg">
           <button class="u-black u-border-none u-btn u-btn-submit u-button-style u-hover-grey-75 u-btn-2" type="submit">Search</button>
             <input type="submit" value="submit" class="u-form-control-hidden">
           </div>
@@ -133,7 +133,7 @@
           <thead class="u-align-center u-grey-80 u-table-header u-table-header-1">
             
             <tr style="height: 36px;">
-             <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-3">Dboy_ID</th>
+             <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-3">DeliveryBoy ID</th>
               <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-1">Name</th>
               <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-2">Email ID</th>
               <th class="u-border-1 u-border-grey-50 u-table-cell u-table-cell-4">City</th>

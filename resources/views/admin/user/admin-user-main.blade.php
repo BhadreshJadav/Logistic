@@ -92,7 +92,7 @@
       </nav>
       <p class="u-text u-text-palette-1-base u-text-1">
         <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-1"
-          href="../admin-home.html" data-page-id="84728025">FASTER </a>
+          href="{{url('admin-home')}}" data-page-id="84728025">FASTER </a>
       </p>
     </div>
   </header>

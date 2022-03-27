@@ -28,28 +28,28 @@
 </head>
 <body>
 
-<h1 align='center'>Delivery-Boy Details</h1>
+<h1 align='center'>Delivery boy order details Details</h1>
 
 <table id="customers">
   <tr>
-    <th>id</th>
-    <th>Name</th>
-    <th>Email_id</th>
-    <th>City</th>
-    <th>Area</th>
-    <th>Pincode</th>
+    <th>User ID</th>
+    <th>User Name</th>
+    <th>User CIty</th>
+    <th>User Area</th>
     <th>Mobile</th>
+    <th>Order Status</th>
+    <th>AWB Number</th>
    </tr>
-   @if(count ($data))
-   @foreach($data as $user)
+   @if(count($data))
+   @foreach($data as $order)
   <tr>
-    <td>{{$user->id}}</td>
-    <td>{{$user->name}}</td>
-    <td>{{$user->email}}</td>
-    <td>{{$user->city}}</td>
-    <td>{{$user->area}}</td>
-    <td>{{$user->pincode}}</td>
-    <td>{{$user->mobile}}</td>
+    <td>{{ @$order->user->id }}</td>
+    <td>{{ @$order->user->name }}</td>
+    <td>{{ @$order->user->name }}</td>
+    <td>{{ @$order->user->area  }}</td>
+    <td>{{ @$order->user->mobile }}</td>
+    <td>{{ $order->status }}</td>
+    <td>{{ $order->awb_no }}</td>
   </tr>
   @endforeach
   @else

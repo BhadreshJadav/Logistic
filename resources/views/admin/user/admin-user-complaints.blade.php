@@ -127,11 +127,8 @@
               <td class="u-border-1 u-border-grey-50 u-table-cell">{{$value->subject}}</td>
               <td class="u-border-1 u-border-grey-50 u-table-cell">{{$value->description}}</td>
               <td class="u-border-1 u-border-grey-50 u-table-cell">
-              <select id="status">
-                <option value="status">Update Status</option>
-                <option value="pending">Pending</option>
-                <option value="reviewed">Reviewed</option>
-                </select>
+              <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-3"
+                href="{{url('admin-user-update-complaint-status/'.$value->id)}}" data-page-id="9103720">{{$value->status}}</a>
               </td>
               <td class="u-border-1 u-border-grey-50 u-table-cell"><span
                   class="u-file-icon u-icon u-text-white u-icon-2" data-href="/deleteUserComplaint/{{$value->id}}"><img src="{{asset('images/p-images/9.png')}}" alt=""></span>

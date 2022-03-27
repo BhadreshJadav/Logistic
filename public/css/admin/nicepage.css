@@ -36490,9 +36490,14 @@ a.u-link.u-text-hover-grey-90:hover {
         }
         .u-btn
         {
-        margin-top: 20px;
+        margin-top: 2px;
         margin-bottom: 20px;
         }
+
+       .fg{
+         width: 200px;
+       }
+
         blockquote
         {
         font-style: italic;

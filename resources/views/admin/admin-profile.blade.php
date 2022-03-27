@@ -125,6 +125,7 @@
                 <span style="font-size: 1rem;"><b>Role :</b>{{ $user->role ?? '-' }}</span>
                 <br>
                 <span style="font-size: 1rem;"><b>Email ID :</b> {{ $user->email ?? '-' }}
+                <br><b>City :</b> {{ $user->city ?? '-' }}
                 <br><b> Mobile :</b> {{ $user->mobile ?? '-' }}
                 </span>
                 <br>

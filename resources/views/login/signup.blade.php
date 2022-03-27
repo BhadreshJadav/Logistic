@@ -57,10 +57,16 @@
                         <input class="input100" type="password" name="password" placeholder="Type your password">
                         <span class="focus-input100" data-symbol="&#xf190;"></span>
                     </div>
-
+        
                     <div class="wrap-input100 validate-input m-b-23" data-validate="City is reauired">
                         <span class="label-input100">City</span>
                         <input class="input100" type="text" name="city" placeholder="Type your city">
+                        <span class="focus-input100" data-symbol="&#x26c1;"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input m-b-23" data-validate="Area is reauired">
+                        <span class="label-input100">Area</span>
+                        <input class="input100" type="text" name="area" placeholder="Type your Area">
                         <span class="focus-input100" data-symbol="&#x26c1;"></span>
                     </div>
 

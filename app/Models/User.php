@@ -54,6 +54,12 @@ class User extends Authenticatable
         return $this->hasMany(dboy_complaint::class, 'dboy_id', 'id');
     }
 
+    public function usercomplaints() {
+        return $this->hasMany(user_complaint::class, 'user_id', 'id');
+    }
+
+
+
     public function orders() {
         return $this->hasMany(Order::class, 'user_id', 'id');
     }

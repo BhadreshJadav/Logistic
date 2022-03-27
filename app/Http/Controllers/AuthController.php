@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Mail\ForgotPassword;
 use App\Mail\UpdateEmail;
+use App\Models\Area;
+use App\Models\City;
 use App\Models\User;
 use Database\Seeders\users;
 use Illuminate\Http\Request;
@@ -117,7 +119,7 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        $input = $request->only('name', 'city', 'email', 'password', 'mobile');
+        $input = $request->only('name', 'city','area', 'email', 'password', 'mobile');
         $input['role'] = 'user';
         $input['password'] = Hash::make($input['password']);
 
@@ -250,9 +252,10 @@ class AuthController extends Controller
     {
         $input = $request->all();
         $user = Auth::user();
+       
 
         if (Hash::check($input['password'], $user->password)) {
-            $user->password = Hash::make($input['password']);
+            $user->password = Hash::make($input['new_password']);
             $user->save();
             $route = '';
             if (Auth::user()->role === 'admin') {
@@ -275,6 +278,8 @@ class AuthController extends Controller
         $user = Auth::user();
 
         $input = $request->only('name', 'city', 'email', 'password', 'mobile','area','pincode');
+        $input['city'] = City::whereId($input['city'])->value('name');
+        $input['area'] = Area::whereId($input['area'])->value('name');
         $input['role'] = 'manager';
         $input['password'] = Hash::make($input['password']);
 
@@ -298,14 +303,19 @@ class AuthController extends Controller
     }
   //manager export dboy details as a pdf
 
-  public function exportDboyDetails()
+    public function exportDboyDetails(Request $request)
   {
-      $user = Auth::user();
-     $data = User::where('role','delivery-boy');
-      $pdf = PDF::loadView('pdf.Dboydetails',[
-          'data'=>$data
-      ]);
-      return $pdf->download('DboyDetails.pdf');
+    $user = Auth::user();
+    $city = $user->city;
+    $data = User::where('role','delivery-boy' )->where('city', $city);
+    if (isset($request->search) && $request->search) {
+        $data->where('name', 'like' ,'%'.$request->search.'%');
+    }
+    $data = $data->get();
+     $pdf = PDF::loadView('pdf.Dboydetails',[
+         'data'=>$data
+     ]);
+     return $pdf->download('Dboydetails.pdf');
   }
 
 
@@ -315,6 +325,8 @@ class AuthController extends Controller
         $user = Auth::user();
 
         $input = $request->only('name', 'city', 'email', 'password', 'mobile','area','pincode');
+        $input['city'] = City::whereId($input['city'])->value('name');
+        $input['area'] = Area::whereId($input['area'])->value('name');
         $input['role'] = 'delivery-boy';
         $input['password'] = Hash::make($input['password']);
 

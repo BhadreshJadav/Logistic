@@ -6,6 +6,8 @@
   <meta charset="utf-8">
   <meta name="keywords"
     content="Brand design, We help and solve your business problem, ​​We focus on ensuring a competitive edge, ​Flexible Distance Learning, 8 650, 2 500, 1 500, 9 000, Our Services, Need More Information?, Our Latest Work">
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+
   <meta name="description" content="">
   <meta name="page_type" content="np-template-header-footer-from-plugin">
   <title>Home</title>
@@ -242,6 +244,13 @@ c5.5,0,9.9,4.5,9.9,9.9V73.3z"></path>
             class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-15 u-btn-1">
             Track &amp; Trace</button>
           </form>
+          @if (session('success'))
+            <div class="card-body">
+                <div class="alert alert-danger" role="alert">
+                    {{ session('success') }}
+                </div>
+            </div>
+        @endif
         </div>
       </div>
     </div>
@@ -534,7 +543,7 @@ c5.5,0,9.9,4.5,9.9,9.9V73.3z"></path>
                 </div>
                 <!--/position--><span class="u-file-icon u-icon u-text-palette-1-base u-icon-1" data-href="{{url('/')}}"
                   data-page-id="42122183"><img src="{{asset('images/3.png')}}" alt=""></span><span
-                  class="u-file-icon u-icon u-text-palette-1-base u-icon-2"><img src="{{asset('images/8.png')}}" alt=""></span>
+                  class="u-file-icon u-icon u-text-palette-1-base u-icon-2"><img src="{{asset('images/4.png')}}" alt=""></span>
               </div>
             </div>
             <div class="u-align-left u-container-style u-layout-cell u-left-cell u-size-15 u-layout-cell-2">

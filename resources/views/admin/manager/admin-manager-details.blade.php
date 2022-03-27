@@ -105,12 +105,12 @@
       <div class="u-form u-form-1">
         <form action="{{ route('admin-manager-details') }}" method="get" class="u-clearfix  u-form-spacing-15 u-inner-form"
           style="padding: 15px;" source="custom">
-          <div class="u-form-group u-form-name u-label-none">
+          <div class="u-form-group u-form-name u-label-none fg">
             <label for="name-ef64" class="u-label">Name</label>
             <input type="text" placeholder="Enter Name" id="name-ef64" name="search"
               class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="">
           </div>
-          <div class="u-form-group u-form-submit">
+          <div class="u-form-group u-form-submit fg">
           <button class="u-black u-border-none u-btn u-btn-submit u-button-style u-hover-grey-75 u-btn-2" type="submit">Search</button>
 
             <input type="submit" value="submit" class="u-form-control-hidden">

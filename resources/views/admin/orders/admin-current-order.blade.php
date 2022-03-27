@@ -104,13 +104,13 @@
       <h2 class="u-align-center u-text u-text-default u-text-1">Current Orders Details</h2>
       <div class="u-form u-form-1">
       <form action="{{ route('admin-current-order') }}" method="get" class="u-clearfix  u-form-spacing-15 u-inner-form"
-          style="padding: 15px;" source="custom">
-          <div class="u-form-group u-form-name u-label-none">
+          style="padding: 15px;" source="custom" display="inline">
+          <div class="u-form-group u-form-name u-label-none fg">
             <label for="name-ef64" class="u-label">Name</label>
-            <input type="search" placeholder="Enter User id or Name" id="name-ef64" name="search"
-              class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="" value="">`
+            <input type="search" placeholder="Enter AWB Number" id="name-ef64" name="search"
+              class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="" value="">
           </div>
-          <div class="u-form-group u-form-submit">
+          <div class="u-form-group u-form-submit fg">
             <button class="u-black u-border-none u-btn u-btn-submit u-button-style u-hover-grey-75 u-btn-2" type="submit">Search</button>
           </div>
         </form>

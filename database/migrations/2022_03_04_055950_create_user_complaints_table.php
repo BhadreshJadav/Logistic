@@ -18,6 +18,8 @@ return new class extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->string('subject');
             $table->longText('description');
+            $table->string('status');
+
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

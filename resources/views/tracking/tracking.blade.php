@@ -43,33 +43,39 @@
         data-image-width="128" data-image-height="128" data-href="{{url('/')}}">
       <div class="u-container-style u-grey-5 u-group u-shape-rectangle u-group-1">
         <div class="u-container-layout u-container-layout-1">
-          <h6 class="u-text u-text-1">AWB number here<span style="font-weight: 700;"> {{ $order->awb_no }}</span>
+          <h6 class="u-text u-text-1">AWB number:<span style="font-weight: 700;">  {{ $order->awb_no }}</span>
           </h6>
         </div>
       </div>
+      
       <div class="u-container-style u-group u-group-2">
         <div class="u-container-layout">
           <h4 class="u-align-center u-text u-text-default u-text-2">Track Delivery Status<span
               style="font-weight: 700;"></span>
-          </h4><span class="u-file-icon u-icon u-icon-1"><img src="{{asset('images/tracking/3788207.png')}}" alt=""></span>
-          <h6 class="u-text u-text-default u-text-3" @if($order->status === 'Pick Up') style="color: #1e7e34" @endif>Pick Up</h6>
+          </h4><span class="u-file-icon u-icon u-icon-1"><img src="{{asset('images/tracking/3788207.png')}}" alt="" @if($order->status === 'Pick Up') style="filter: drop-shadow(1px 0px 0px red) grayscale(50%) invert(30%) opacity(100%) sepia(50%) saturate(3210%) hue-rotate(330deg) brightness(90%) contrast(100%);" @endif ></span>
+          <h6 class="u-text u-text-default u-text-3" @if($order->status === 'Pick Up') style="color: #ff0a33" @endif>Pick Up</h6>
+        
           <div class="u-black u-shape u-shape-circle u-shape-1"></div><span class="u-file-icon u-icon u-icon-2"><img
               src="{{asset('images/tracking/16251.png')}}" alt=""></span><span class="u-file-icon u-icon u-icon-3"><img
-              src="{{asset('images/tracking/1585156.png')}}" alt=""></span>
-          <h6 class="u-text u-text-default u-text-4" @if($order->status === 'City Warehouse') style="color: #1e7e34" @endif>City Warehouse</h6>
+              src="{{asset('images/tracking/1585156.png')}}" alt="" @if($order->status === 'City Warehouse') style="filter: drop-shadow(1px 0px 0px red) grayscale(50%) invert(30%) opacity(100%) sepia(50%) saturate(3210%) hue-rotate(330deg) brightness(90%) contrast(100%);" @endif></span>
+          <h6 class="u-text u-text-default u-text-4" @if($order->status === 'City Warehouse') style="color: #ff0a33" @endif>City Warehouse</h6>
+         
           <div class="u-black u-preserve-proportions u-shape u-shape-circle u-shape-2"></div><span
-            class="u-file-icon u-icon u-icon-4"><img src="{{asset('images/tracking/16251.png')}}" alt=""></span><span
-            class="u-align-left u-file-icon u-icon u-icon-5"><img src="{{asset('images/tracking/6832115.png')}}" alt=""></span>
-          <h6 class="u-text u-text-default u-text-5" @if($order->status === 'Area Warehouse') style="color: #1e7e34" @endif>Area Warehouse</h6>
+            class="u-file-icon u-icon u-icon-4"><img src="{{asset('images/tracking/16251.png')}}" alt="" ></span><span
+            class="u-align-left u-file-icon u-icon u-icon-5"><img src="{{asset('images/tracking/6832115.png')}}" alt="" @if($order->status === 'Area Warehouse') style="filter: drop-shadow(1px 0px 0px red) grayscale(50%) invert(30%) opacity(100%) sepia(50%) saturate(3210%) hue-rotate(330deg) brightness(90%) contrast(100%);" @endif></span>
+          <h6 class="u-text u-text-default u-text-5" @if($order->status === 'Area Warehouse') style="color: #ff0a33" @endif>Area Warehouse</h6>
+        
           <div class="u-black u-shape u-shape-circle u-shape-3"></div><span class="u-file-icon u-icon u-icon-6"><img
               src="{{asset('images/tracking/16251.png')}}" alt=""></span><span class="u-align-left u-file-icon u-icon u-icon-7"><img
-              src="{{asset('images/tracking/411763.png')}}" alt=""></span>
-          <h6 class="u-text u-text-default u-text-6" @if($order->status === 'Shipped') style="color: #1e7e34" @endif>Shipped</h6>
+              src="{{asset('images/tracking/411763.png')}}" alt="" @if($order->status === 'Shipped') style="filter: drop-shadow(1px 0px 0px red) grayscale(50%) invert(30%) opacity(100%) sepia(50%) saturate(3210%) hue-rotate(330deg) brightness(90%) contrast(100%);" @endif></span>
+          <h6 class="u-text u-text-default u-text-6" @if($order->status === 'Shipped') style="color: #ff0a33" @endif>Shipped</h6>
+        
           <div class="u-black u-shape u-shape-circle u-shape-4"></div><span class="u-file-icon u-icon u-icon-8" ><img
-              src="{{asset('images/tracking/16251.png')}}" alt="" @if($order->status === 'Done') style="filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(130deg) brightness(95%) contrast(80%);" @endif></span><span class="u-align-left u-file-icon u-icon u-icon-9"><img
-              src="{{asset('images/tracking/1023656.png')}}" alt="" @if($order->status === 'Done') style="filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(130deg) brightness(95%) contrast(80%);" @endif></span>
-          <h6 class="u-text u-text-default u-text-7" @if($order->status === 'Done') style="color: #1e7e34" @endif>Done</h6>
+              src="{{asset('images/tracking/16251.png')}}" alt="" ></span><span class="u-align-left u-file-icon u-icon u-icon-9"><img
+              src="{{asset('images/tracking/1023656.png')}}" alt="" @if($order->status === 'Done') style="filter: drop-shadow(1px 0px 0px red) grayscale(50%) invert(30%) opacity(100%) sepia(50%) saturate(3210%) hue-rotate(330deg) brightness(90%) contrast(100%);" @endif></span>
+          <h6 class="u-text u-text-default u-text-7" @if($order->status === 'Done') style="color: #ff0a33" @endif>Done</h6>
           <div class="u-black u-shape u-shape-circle u-shape-5"></div>
+
         </div>
       </div>
     </div>

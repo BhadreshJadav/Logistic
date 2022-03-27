@@ -99,25 +99,20 @@
   <section class="u-clearfix u-section-1" id="sec-65b2">
     <div class="u-clearfix u-sheet u-sheet-1"><span class="u-file-icon u-icon u-icon-1"
         data-href="{{url('deliveryboy-home')}}" data-page-id="83402580"><img src="{{asset('images/p-images/8541838.png')}}" alt=""></span>
-      <a href="https://nicepage.com/joomla-page-builder"
-        class="u-black u-border-none u-btn u-button-style u-hover-grey-75 u-btn-1">Download as XLS</a>
+      <a href="{{route('export_DboyOrder_pdf')}}"
+        class="u-black u-border-none u-btn u-button-style u-hover-grey-75 u-btn-1">Download as PDF</a>
       <h2 class="u-align-center u-text u-text-default u-text-1">&nbsp;Orders Details</h2>
       <div class="u-form u-form-1">
-        <form action="#" method="POST" class="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form"
-          style="padding: 15px;" source="custom">
-          <div class="u-form-group u-form-name u-label-none">
+      <form action="{{ route('deliveryboy-order') }}" method="get" class="u-clearfix  u-form-spacing-15 u-inner-form"
+          style="padding: 15px;" source="custom" display="inline">
+          <div class="u-form-group u-form-name u-label-none fg">
             <label for="name-ef64" class="u-label">Name</label>
-            <input type="text" placeholder="Enter AWB number" id="name-ef64" name="name"
-              class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="">
+            <input type="search" placeholder="Enter AWB Number" id="name-ef64" name="search"
+              class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="" value="">
           </div>
-          <div class="u-form-group u-form-submit">
-            <a href="#"
-              class="u-black u-border-none u-btn u-btn-submit u-button-style u-hover-grey-75 u-btn-2">Search</a>
-            <input type="submit" value="submit" class="u-form-control-hidden">
+          <div class="u-form-group u-form-submit fg">
+            <button class="u-black u-border-none u-btn u-btn-submit u-button-style u-hover-grey-75 u-btn-2" type="submit">Search</button>
           </div>
-          <div class="u-form-send-message u-form-send-success">#FormSendSuccess</div>
-          <div class="u-form-send-error u-form-send-message">#FormSendError</div>
-          <input type="hidden" value="" name="recaptchaResponse">
         </form>
       </div>
       <div class="u-expanded-width u-table u-table-responsive u-table-1">
@@ -134,10 +129,12 @@
           <thead class="u-align-center u-grey-80 u-table-header u-table-header-1">
             <tr style="height: 36px;">
               <th class="u-border-1 u-border-grey-50 u-table-cell">User ID</th>
-              <th class="u-border-1 u-border-grey-50 u-table-cell">Customer City</th>
-              <th class="u-border-1 u-border-grey-50 u-table-cell">Customer Area</th>
-              <th class="u-border-1 u-border-grey-50 u-table-cell">Customer Pincode</th>
-              <th class="u-border-1 u-border-grey-50 u-table-cell">Customer Mobile</th>
+              <th class="u-border-1 u-border-grey-50 u-table-cell">User Name</th>
+
+              <th class="u-border-1 u-border-grey-50 u-table-cell">User City</th>
+              <th class="u-border-1 u-border-grey-50 u-table-cell">User Area</th>
+              <!-- <th class="u-border-1 u-border-grey-50 u-table-cell">Customer Pincode</th> -->
+              <th class="u-border-1 u-border-grey-50 u-table-cell">User Mobile</th>
               <th class="u-border-1 u-border-grey-50 u-table-cell">Order Status</th>
               <th class="u-border-1 u-border-grey-50 u-table-cell">AWB Number</th>
             </tr>
@@ -146,9 +143,11 @@
           @foreach($data as $order)
             <tr style="height: 52px;">
               <td class="u-border-1 u-border-grey-50 u-table-cell">{{ @$order->user->id }}</td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell">{{ @$order->user->city }}</td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell">{{ @$order->user->area ?? '-' }}</td>
-              <td class="u-border-1 u-border-grey-50 u-table-cell">{{ @$order->user->pincode ?? '-' }}</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{ @$order->user->name }}</td>
+
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{ @$order->user->name }}</td>
+              <td class="u-border-1 u-border-grey-50 u-table-cell">{{ @$order->user->area  }}</td>
+              <!-- <td class="u-border-1 u-border-grey-50 u-table-cell">{{ @$order->user->pincode ?? '-' }}</td> -->
               <td class="u-border-1 u-border-grey-50 u-table-cell">{{ @$order->user->mobile }}</td>
               <td class="u-border-1 u-border-grey-50 u-table-cell">{{ $order->status }}</td>
               <td class="u-border-1 u-border-grey-50 u-table-cell">{{ $order->awb_no }}</td>

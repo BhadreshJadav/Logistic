@@ -10,4 +10,8 @@ class user_complaint extends Model
     use HasFactory;
 
     protected $guarded = [];
+    
+    public function user() {
+        return $this->belongsTo(user_complaint::class);
+    }
 }
